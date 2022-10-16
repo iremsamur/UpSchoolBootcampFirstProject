@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "AddService";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Yeni Hizmet Ekleme Sayfası</h2>
+<form method="post">
+    <label>Hizmet Başlığı</label>
+    <input type="text" name="Title"/><!---buraya name değeri verilir. Bu name değeri sql'deki o kolon ismiyle aynı olmalıdır.-->
+    <br />
+    <button class="btn btn-info">Hizmeti Kaydet</button>
+
+
+</form>
+

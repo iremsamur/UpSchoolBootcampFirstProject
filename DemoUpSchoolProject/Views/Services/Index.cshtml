@@ -1,0 +1,41 @@
+﻿@using DemoUpSchoolProject.Models.Entities
+@model List<TblServices>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h2>Hizmetlerim</h2>
+<!--üste eklenen model ile controllers values'dan gelen değerler karşılanır.-->
+<table class="table table-bordered">
+    <!--Önce aracın türü sonra biçimlendirme formatı şeklinde bootstrap verilir.
+    türü table, table-bordered ise format şekli -->
+    <tr>
+        
+        <th>#</th>
+        <th>Hizmet Adı</th>
+
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <!--razor syntax-->
+    @foreach (var item in Model)
+    {
+        sayac += 1;
+        <tr>
+            
+            <td>sayac</td>
+            <td>@item.Title</td>
+            
+            <td><a href="/Services/DeleteService/@item.ServicesID" class="btn btn-danger">Sil</a></td>
+            <td><a href="#" class="btn btn-success">Güncelle</a></td>
+
+        </tr>
+
+    }
+
+
+</table>
+<a href="#" class="btn btn-primary">Yeni Hizmet Girişi</a>
+
