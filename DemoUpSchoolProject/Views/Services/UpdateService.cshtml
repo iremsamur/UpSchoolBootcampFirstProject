@@ -1,0 +1,25 @@
+﻿@model  DemoUpSchoolProject.Models.Entities.TblServices
+@{
+    ViewBag.Title = "UpdateService";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+
+<h2>UpdateService</h2>
+<form method="post">
+    
+    @Html.HiddenFor(x=>x.ServicesID,new { @class = "form-control" })<!--TextBoxFor ile TextBox'ın farkı textboxfor lambda işlemleri ile direk kullanılabilir.
+                               yani x=>x. yapısı ile kullanılabilir. => öyleki olur. Yani veritabanındaki kolonları verebiliriz--->
+    <!--Html.HiddenFor ile id'nin buraya gizli aktarılmasını sağlarız.
+        new class ile class değeri verebiliriz.'-->
+    <br />
+    <label>Hizmet Adı</label>
+    @Html.TextBoxFor(x=>x.Title, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+    
+
+
+
+</form>
+

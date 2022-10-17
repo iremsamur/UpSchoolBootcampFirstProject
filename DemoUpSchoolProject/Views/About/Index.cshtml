@@ -1,13 +1,10 @@
 ﻿@using DemoUpSchoolProject.Models.Entities
-@model List<TblServices>
+@model List<TblAbout>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
     int sayac = 0;
 }
-
-
-<h2>Hizmetlerim</h2>
 @if (Model.Count == 0)
 {
     <div  class="alert alert-warning" role="alert">
@@ -17,29 +14,31 @@
 }
 else
 {
-    <!--üste eklenen model ile controllers values'dan gelen değerler karşılanır.-->
     <table class="table table-bordered">
         <!--Önce aracın türü sonra biçimlendirme formatı şeklinde bootstrap verilir.
         türü table, table-bordered ise format şekli -->
         <tr>
 
             <th>#</th>
-            <th>Hizmet Adı</th>
+            <th>Ad soyad</th>
 
+            <th>Başlık</th>
             <th>Sil</th>
             <th>Güncelle</th>
         </tr>
         <!--razor syntax-->
+
         @foreach (var item in Model)
         {
             sayac += 1;
             <tr>
 
                 <td>@sayac</td>
+                <td>@item.NameSurname</td>
                 <td>@item.Title</td>
 
-                <td><a href="/Services/DeleteService/@item.ServicesID" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Services/UpdateService/@item.ServicesID" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/About/DeleteAbout/@item.AboutID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/About/UpdateAbout/@item.AboutID" class="btn btn-success">Güncelle</a></td>
                 <!--güncellenecek verinin id değerini link ile göndeririz-->
 
             </tr>
@@ -51,5 +50,6 @@ else
 
 }
 
-<a href="/Services/AddService" class="btn btn-primary">Yeni Hizmet Girişi</a>
+
+<a href="/About/AddAbout" class="btn btn-primary">Yeni Hakkında Girişi</a>
 

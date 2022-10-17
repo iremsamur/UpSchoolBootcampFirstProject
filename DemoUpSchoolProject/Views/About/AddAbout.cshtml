@@ -1,0 +1,27 @@
+﻿@model DemoUpSchoolProject.Models.Entities.TblAbout
+@{
+    ViewBag.Title = "AddAbout";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+
+<form method="post">
+
+    <label>Ad Soyad</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+    <br />
+
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <label>Image Url</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+
+
+</form>
+

@@ -52,5 +52,30 @@ namespace DemoUpSchoolProject.Controllers
             return RedirectToAction("Index");
 
         }
+
+        //önce güncelleyeceğimiz verinin verilerini sayfaya buradan taşırız.
+
+        [HttpGet]
+        public ActionResult UpdateService(int ID)
+        {
+            var values = db.TblServices.Find(ID);
+            return View(values);
+
+        }
+        //şimdi güncelleme işlemini yapacak httppost metodunu yazarız.
+        [HttpPost]
+        public ActionResult UpdateService(TblServices p)
+        {
+            var values = db.TblServices.Find(p.ServicesID);//modelden gelen id değerini alır.
+            //güncelleme
+            values.Title = p.Title;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+            //eğer html beginform kullanılırsa httpget ve httppost metodu aynı isimli overload olmasa bile çalışırdı.
+            //Ama html begin form kullanılırsa bu overload durumu kaldırılabilir.
+
+        }
+
     }
 }
