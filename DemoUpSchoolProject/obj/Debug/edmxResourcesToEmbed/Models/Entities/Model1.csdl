@@ -10,6 +10,38 @@
     <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="ImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="TblAdmin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="TblMember">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemberSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemberMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblMessage">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SenderMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SenderNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MessageDate" Type="DateTime" Precision="0" />
+    <Property Name="MessageSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MessageContent" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="TblServices">
     <Key>
       <PropertyRef Name="ServicesID" />
@@ -26,19 +58,23 @@
     <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="ImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="UpSchoolDbPortfolioEntities" annotation:LazyLoadingEnabled="true">
+  <EntityType Name="TblTestimonial">
+    <Key>
+      <PropertyRef Name="TestimonialID" />
+    </Key>
+    <Property Name="TestimonialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Profession" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Balance" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="UpSchoolDbPortfolioEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="TblAbout" EntityType="Self.TblAbout" />
+    <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" />
+    <EntitySet Name="TblMember" EntityType="Self.TblMember" />
+    <EntitySet Name="TblMessage" EntityType="Self.TblMessage" />
     <EntitySet Name="TblServices" EntityType="Self.TblServices" />
     <EntitySet Name="TblServicesFeature" EntityType="Self.TblServicesFeature" />
-    <EntitySet Name="TblAdmin" EntityType="UpSchoolDbPortfolioModel.TblAdmin" />
+    <EntitySet Name="TblTestimonial" EntityType="Self.TblTestimonial" />
   </EntityContainer>
-  <EntityType Name="TblAdmin">
-    <Key>
-      <PropertyRef Name="AdminID" />
-    </Key>
-    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="Status" Type="Boolean" />
-  </EntityType>
 </Schema>

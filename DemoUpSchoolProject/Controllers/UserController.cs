@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DemoUpSchoolProject.Models.Entities;
 
 namespace DemoUpSchoolProject.Controllers
 {
     public class UserController : Controller
     {
+        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
         // GET: User
         public ActionResult Index()
         {
@@ -29,6 +31,11 @@ namespace DemoUpSchoolProject.Controllers
         {
             
             return PartialView();
+        }
+        public PartialViewResult AboutPartial()
+        {
+            var values = db.TblAbout.ToList();
+            return PartialView("AboutPartial",values);
         }
     }
 }

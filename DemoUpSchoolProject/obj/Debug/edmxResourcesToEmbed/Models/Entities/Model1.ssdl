@@ -19,6 +19,29 @@
     <Property Name="Password" Type="nvarchar" MaxLength="20" />
     <Property Name="Status" Type="bit" />
   </EntityType>
+  <EntityType Name="TblMember">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MemberSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MemberMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MemberPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblMessage">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SenderMail" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiverMail" Type="nvarchar" MaxLength="50" />
+    <Property Name="SenderNameSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiverNameSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="MessageDate" Type="date" />
+    <Property Name="MessageSubject" Type="nvarchar" MaxLength="50" />
+    <Property Name="MessageContent" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
   <EntityType Name="TblServices">
     <Key>
       <PropertyRef Name="ServicesID" />
@@ -35,10 +58,23 @@
     <Property Name="Description" Type="nvarchar" MaxLength="250" />
     <Property Name="ImageUrl" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="TblTestimonial">
+    <Key>
+      <PropertyRef Name="TestimonialID" />
+    </Key>
+    <Property Name="TestimonialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSurname" Type="nvarchar" MaxLength="30" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" />
+    <Property Name="Profession" Type="nvarchar" MaxLength="30" />
+    <Property Name="Balance" Type="int" />
+  </EntityType>
   <EntityContainer Name="UpSchoolDbPortfolioModelStoreContainer">
     <EntitySet Name="TblAbout" EntityType="Self.TblAbout" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblMember" EntityType="Self.TblMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblServices" EntityType="Self.TblServices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblServicesFeature" EntityType="Self.TblServicesFeature" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblTestimonial" EntityType="Self.TblTestimonial" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

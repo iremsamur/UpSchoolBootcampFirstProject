@@ -9,7 +9,7 @@ namespace DemoUpSchoolProject.Controllers
 {
     public class StatisticController : Controller
     {
-        UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
+        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
         
         // GET: Statistic
         public ActionResult Index()

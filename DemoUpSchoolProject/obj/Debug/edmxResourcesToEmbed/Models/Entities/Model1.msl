@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="UpSchoolDbPortfolioModelStoreContainer" CdmEntityContainer="UpSchoolDbPortfolioEntities">
+  <EntityContainerMapping StorageEntityContainer="UpSchoolDbPortfolioModelStoreContainer" CdmEntityContainer="UpSchoolDbPortfolioEntities1">
     <EntitySetMapping Name="TblAbout">
       <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblAbout">
         <MappingFragment StoreEntitySet="TblAbout">
@@ -9,6 +9,41 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblAdmin">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblAdmin">
+        <MappingFragment StoreEntitySet="TblAdmin">
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblMember">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblMember">
+        <MappingFragment StoreEntitySet="TblMember">
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+          <ScalarProperty Name="MemberSurname" ColumnName="MemberSurname" />
+          <ScalarProperty Name="MemberMail" ColumnName="MemberMail" />
+          <ScalarProperty Name="MemberPassword" ColumnName="MemberPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblMessage">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblMessage">
+        <MappingFragment StoreEntitySet="TblMessage">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="SenderMail" ColumnName="SenderMail" />
+          <ScalarProperty Name="ReceiverMail" ColumnName="ReceiverMail" />
+          <ScalarProperty Name="SenderNameSurname" ColumnName="SenderNameSurname" />
+          <ScalarProperty Name="ReceiverNameSurname" ColumnName="ReceiverNameSurname" />
+          <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+          <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+          <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -30,13 +65,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TblAdmin">
-      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblAdmin">
-        <MappingFragment StoreEntitySet="TblAdmin">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+    <EntitySetMapping Name="TblTestimonial">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblTestimonial">
+        <MappingFragment StoreEntitySet="TblTestimonial">
+          <ScalarProperty Name="TestimonialID" ColumnName="TestimonialID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

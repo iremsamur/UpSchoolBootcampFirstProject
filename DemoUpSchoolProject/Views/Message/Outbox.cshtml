@@ -1,0 +1,28 @@
+﻿@model List<DemoUpSchoolProject.Models.Entities.TblMessage>
+@{
+    ViewBag.Title = "Outbox";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h2>Giden Kutusu</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Alıcı</th>
+        <th>Konu</th>
+        <th>Mesajı Aç</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        sayac++;
+        <tr>
+            <td>@sayac</td>
+            <td>@item.ReceiverNameSurname</td>
+            <td>@item.MessageSubject</td>
+            <td><a href="/Message/MessageDetails/@item.MessageID" class="btn btn-primary">Mesajı Aç</a></td>
+        </tr>
+    }
+</table>
+

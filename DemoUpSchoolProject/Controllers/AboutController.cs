@@ -9,8 +9,9 @@ namespace DemoUpSchoolProject.Controllers
 {
     public class AboutController : Controller
     {
-        UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
+        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
         // GET: About
+        
         public ActionResult Index()
         {
             var values = db.TblAbout.ToList();

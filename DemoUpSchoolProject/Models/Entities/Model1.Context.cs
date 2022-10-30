@@ -13,10 +13,10 @@ namespace DemoUpSchoolProject.Models.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class UpSchoolDbPortfolioEntities : DbContext
+    public partial class UpSchoolDbPortfolioEntities1 : DbContext
     {
-        public UpSchoolDbPortfolioEntities()
-            : base("name=UpSchoolDbPortfolioEntities")
+        public UpSchoolDbPortfolioEntities1()
+            : base("name=UpSchoolDbPortfolioEntities1")
         {
         }
     
@@ -26,9 +26,11 @@ namespace DemoUpSchoolProject.Models.Entities
         }
     
         public virtual DbSet<TblAbout> TblAbout { get; set; }
+        public virtual DbSet<TblAdmin> TblAdmin { get; set; }
+        public virtual DbSet<TblMember> TblMember { get; set; }
+        public virtual DbSet<TblMessage> TblMessage { get; set; }
         public virtual DbSet<TblServices> TblServices { get; set; }
         public virtual DbSet<TblServicesFeature> TblServicesFeature { get; set; }
-        public virtual DbSet<TblAdmin> TblAdmin { get; set; }
         public virtual DbSet<TblTestimonial> TblTestimonial { get; set; }
     }
 }
