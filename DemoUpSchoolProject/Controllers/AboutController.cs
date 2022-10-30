@@ -48,7 +48,7 @@ namespace DemoUpSchoolProject.Controllers
         [HttpGet]
         public ActionResult UpdateAbout(int ID)
         {
-            var values = db.TblServices.Find(ID);
+            var values = db.TblAbout.Find(ID);
             return View(values);
 
         }

@@ -1,0 +1,94 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RegistrationForm_v8 by Colorlib</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="~/Templates/colorlib-regform-24/colorlib-regform-24/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="~/Templates/colorlib-regform-24/colorlib-regform-24/css/style.css">
+</head>
+
+<body>
+    
+
+    <div class="wrapper">
+        <div class="image-holder">
+            <img src="~/Templates/colorlib-regform-24/colorlib-regform-24/images/registration-form-8.jpg" alt="">
+        </div>
+        <div class="form-inner">
+            <form action="" method="post">
+                <div class="form-header">
+                    <h3>Kaydol</h3>
+                    <img src="~/Templates/colorlib-regform-24/colorlib-regform-24/images/sign-up.png" alt="" class="sign-up-icon">
+                </div>
+                <div class="form-group">
+                    <label for="">Ad:</label>
+                    <input type="text" name="MemberName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Soyad:</label>
+                    <input type="text" name="MemberSurname" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Mail Adresi:</label>
+                    <input type="text" name="MemberMail" class="form-control" data-validation="email">
+                </div>
+                <div class="form-group">
+                    <label for="">Parola:</label>
+                    <input type="password" name="MemberPassword" class="form-control" data-validation="length" data-validation-length="min8">
+                </div>
+                <button id="submit">Hesabımı Oluştur</button>
+                <div class="socials">
+                    <p>Sign up with social platforms</p>
+                    <a href="" class="socials-icon">
+                        <i class="zmdi zmdi-facebook"></i>
+                    </a>
+                    <a href="" class="socials-icon">
+                        <i class="zmdi zmdi-instagram"></i>
+                    </a>
+                    <a href="" class="socials-icon">
+                        <i class="zmdi zmdi-twitter"></i>
+                    </a>
+                    <a href="" class="socials-icon">
+                        <i class="zmdi zmdi-tumblr"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="~/Templates/colorlib-regform-24/colorlib-regform-24/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Templates/colorlib-regform-24/colorlib-regform-24/js/jquery.form-validator.min.js"></script>
+    <script src="~/Templates/colorlib-regform-24/colorlib-regform-24/js/main.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/jscript">
+
+        $(document).ready(function () {
+            $("#submit").on("click", function () {
+                    var check = @ViewBag.check;
+                    if (check == true) {
+                        swal("Kayıt Başarılı", "Giriş Sayfasına Yönlendiriliyorsunuz...", "success");
+                       
+                    }
+
+
+
+                });
+
+
+
+        });
+    </script>
+</body>
+</html>
+
