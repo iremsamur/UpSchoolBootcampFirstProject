@@ -12,6 +12,7 @@ namespace DemoUpSchoolProject.Controllers
         UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
         // GET: About
         
+
         public ActionResult Index()
         {
             var values = db.TblAbout.ToList();

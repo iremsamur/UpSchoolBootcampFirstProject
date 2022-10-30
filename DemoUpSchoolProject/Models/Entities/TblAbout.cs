@@ -19,5 +19,10 @@ namespace DemoUpSchoolProject.Models.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        public Nullable<int> MemberID { get; set; }
+    
+        public virtual TblAbout TblAbout1 { get; set; }
+        public virtual TblAbout TblAbout2 { get; set; }
+        public virtual TblMember TblMember { get; set; }
     }
 }

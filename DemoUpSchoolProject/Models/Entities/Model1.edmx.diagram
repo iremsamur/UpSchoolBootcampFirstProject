@@ -4,14 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e401548ff1aa49f78dcc5b1924467547" Name="Diagram1">
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblAbout" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblAdmin" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblMember" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblMessage" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblServices" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblServicesFeature" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblTestimonial" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="24f12ac0bb0d414da8db4b773c892ddd" Name="Diagram1">
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblAbout" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblAdmin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblMember" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblMessage" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblServices" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblServicesFeature" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblTestimonial" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="UpSchoolDbPortfolioModel.FK_TblAbout_TblAbout" ManuallyRouted="false" />
+        <AssociationConnector Association="UpSchoolDbPortfolioModel.FK_TblAbout_TblMember" ManuallyRouted="false" />
+        <AssociationConnector Association="UpSchoolDbPortfolioModel.FK_TblServices_TblMember" ManuallyRouted="false" />
+        <AssociationConnector Association="UpSchoolDbPortfolioModel.FK_TblServicesFeature_TblMember" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

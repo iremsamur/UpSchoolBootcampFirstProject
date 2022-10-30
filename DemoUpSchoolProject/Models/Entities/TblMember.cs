@@ -14,10 +14,25 @@ namespace DemoUpSchoolProject.Models.Entities
     
     public partial class TblMember
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblMember()
+        {
+            this.TblAbout = new HashSet<TblAbout>();
+            this.TblServices = new HashSet<TblServices>();
+            this.TblServicesFeature = new HashSet<TblServicesFeature>();
+        }
+    
         public int MemberID { get; set; }
         public string MemberName { get; set; }
         public string MemberSurname { get; set; }
         public string MemberMail { get; set; }
         public string MemberPassword { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblAbout> TblAbout { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblServices> TblServices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblServicesFeature> TblServicesFeature { get; set; }
     }
 }

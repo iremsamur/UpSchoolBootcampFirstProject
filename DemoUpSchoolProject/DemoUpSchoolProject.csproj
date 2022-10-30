@@ -135,6 +135,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
@@ -243,6 +244,8 @@
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\css\style-starter.css" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\about.jpg" />
+    <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\angularjs.png" />
+    <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\aspnetcore.jpg" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\award.png" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\award1.png" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\award2.png" />
@@ -258,6 +261,8 @@
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\file.png" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\file1.png" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\file2.png" />
+    <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\javaspring.png" />
+    <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\reactjs.png" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\skills.png" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\team1.jpg" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\team2.jpg" />
@@ -682,6 +687,11 @@
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\fonts\muli\Muli-Bold.ttf" />
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\fonts\muli\Muli-Regular.ttf" />
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\fonts\muli\Muli-SemiBold.ttf" />
+    <Content Include="Views\Portfolio\MyPortfolio.cshtml" />
+    <Content Include="Views\Portfolio\Portfolio.cshtml" />
+    <Content Include="Views\Portfolio\Contact.cshtml" />
+    <Content Include="Views\Portfolio\AboutMe.cshtml" />
+    <Content Include="Views\Portfolio\MyServices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

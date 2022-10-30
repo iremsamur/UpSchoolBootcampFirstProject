@@ -16,5 +16,9 @@ namespace DemoUpSchoolProject.Models.Entities
     {
         public int ServicesID { get; set; }
         public string Title { get; set; }
+        public Nullable<int> MemberID { get; set; }
+        public string ImageUrl { get; set; }
+    
+        public virtual TblMember TblMember { get; set; }
     }
 }

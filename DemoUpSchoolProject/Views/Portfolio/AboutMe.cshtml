@@ -1,0 +1,31 @@
+﻿@using DemoUpSchoolProject.Models.Entities
+@model List<TblAbout>
+<div class="">
+    <span class="text">Hakkımda</span>
+    @foreach (var item in Model)
+    {
+        <h1 class="mb-4 title">
+            Merhaba, <span class="type-js"><span class="text-js">Adım @item.NameSurname</span></span><br>
+            @item.Title olarak çalışıyorum.
+        </h1>
+        <p class="mx-lg-5">
+            <strong>@item.Description</strong> alanlarında çalışmayı seviyorum.
+            Hakkımda daha detaylı bilgilere aşağıdan ulaşabilirsiniz.
+        </p>
+        <div class="row">
+            <div class="col-lg-8 mx-lg-auto col-md-10">
+                <img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/assets/images/banner.png" alt="" class="img-fluid mt-lg-5 mt-3">
+            </div>
+        </div>
+        <ul class="follow-social">
+            <li><p>Github ve Linkedin</p></li>
+
+            <li><a href="https://www.linkedin.com/in/iremsamur/" target="_blank"><span class="fa fa-linkedin"></span></a></li>
+            <li><a href="https://github.com/iremsamur" target="_blank"><span class="fa fa-github"></span></a></li>
+
+        </ul>
+
+    }
+
+</div>
+
