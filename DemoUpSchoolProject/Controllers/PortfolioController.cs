@@ -44,6 +44,36 @@ namespace DemoUpSchoolProject.Controllers
             var informations = db.TblServices.Where(x => x.MemberID == id).ToList();
             return PartialView(informations);
         }
+        public PartialViewResult MyFeatureSkills()
+        {
+            var mail = Session["MemberMail"].ToString();
+            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            var id = values.MemberID;
+
+
+            var informations = db.TblServicesFeature.Where(x => x.MemberID == id).ToList();
+            return PartialView(informations);
+        }
+        public PartialViewResult MyExperiences()
+        {
+            var mail = Session["MemberMail"].ToString();
+            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            var id = values.MemberID;
+
+
+            var informations = db.TblExperiences.Where(x => x.MemberID == id).ToList();
+            return PartialView(informations);
+        }
+        public PartialViewResult MyReferences()
+        {
+            var mail = Session["MemberMail"].ToString();
+            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            var id = values.MemberID;
+
+
+            var informations = db.TblReferences.Where(x => x.MemberID == id).ToList();
+            return PartialView(informations);
+        }
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿@using DemoUpSchoolProject.Models.Entities
-@model List<TblServices>
+@model List<TblExperiences>
 <section class="w3l-homeblock3" id="awards">
     <div class="midd-w3 py-5">
         <div class="container py-lg-5 py-md-3">
@@ -7,20 +7,21 @@
                 <div class="col-lg-6">
                     
                     <h3 class="title-big">
-                        Kullandığım Teknolojiler
+                        Deneyimler
                     </h3>
                     <p class="mt-4">
-                        Kendimi backend ve frontend web yazılım geliştirme alanında aşağıda
-                        yer alan teknolojiler üzerinde geliştirdim.
+                        Aşağıda yazılım alanında sahip olduğum iş ve staj deneyimlerim yer almaktadır.
                     </p>
                     <div class="reward-list mt-5">
                         @foreach (var item in Model)
                         {
                             <div class="reward-item">
-                                <div class="reward-item-photo"><img src="@item.ImageUrl" alt="" class="img-fluid"></div>
+                                <div class="reward-item-photo" style="font-size:medium;"><img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/assets/images/banner.png" alt="" class="img-fluid">@item.CompanyName</div>
+
                                 <div class="reward-item-detail">
-                                    <span class="reward-item-title">@item.Title</span>
-                                    <p class="reward-item-descr">Backend Yazılım Geliştirme</p>
+                                    <span class="reward-item-title">@item.JobTitle</span>
+                                    <p class="reward-item-descr">@item.Description</p>
+                                    <p class="reward-item-descr">@item.Duration</p>
                                 </div>
                             </div>
 
@@ -36,7 +37,6 @@
                             <img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/assets/images/award.png" class="img-fluid pos-img" alt="" />
                             <img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/assets/images/award1.png" class="img-fluid pos-img1" alt="" />
                             <img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/assets/images/award2.png" class="img-fluid pos-img2" alt="" />
-                            
                         </div>
                     </div>
                 </div>
@@ -44,4 +44,3 @@
         </div>
     </div>
 </section>
-

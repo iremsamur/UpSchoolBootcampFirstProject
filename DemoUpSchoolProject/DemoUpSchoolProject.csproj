@@ -164,10 +164,16 @@
     <Compile Include="Models\Entities\TblAdmin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\TblExperiences.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\TblMember.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\TblMessage.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\TblReferences.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\TblServices.cs">
@@ -692,6 +698,9 @@
     <Content Include="Views\Portfolio\Contact.cshtml" />
     <Content Include="Views\Portfolio\AboutMe.cshtml" />
     <Content Include="Views\Portfolio\MyServices.cshtml" />
+    <Content Include="Views\Portfolio\MyFeatureSkills.cshtml" />
+    <Content Include="Views\Portfolio\MyExperiences.cshtml" />
+    <Content Include="Views\Portfolio\MyReferences.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

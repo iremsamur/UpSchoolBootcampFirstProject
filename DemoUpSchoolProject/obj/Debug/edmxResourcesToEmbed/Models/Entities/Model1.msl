@@ -23,6 +23,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TblExperiences">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblExperiences">
+        <MappingFragment StoreEntitySet="TblExperiences">
+          <ScalarProperty Name="ExperienceID" ColumnName="ExperienceID" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TblMember">
       <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblMember">
         <MappingFragment StoreEntitySet="TblMember">
@@ -45,6 +57,20 @@
           <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
           <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
           <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblReferences">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblReferences">
+        <MappingFragment StoreEntitySet="TblReferences">
+          <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

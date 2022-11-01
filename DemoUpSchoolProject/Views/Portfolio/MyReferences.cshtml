@@ -1,0 +1,57 @@
+﻿@using DemoUpSchoolProject.Models.Entities
+@model List<TblReferences>
+<section class="w3l-clients" id="skills">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-3">
+            <div class="row">
+                <div class="col-lg-6 align-self">
+                    <div class="position-relative px-lg-5">
+                        <img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/assets/images/clients.png" alt="" class="radius-image img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-5">
+                    <span class="text">Referanslar</span>
+                    <h3 class="title-big">Referanslarım Ve Benim Hakkımda Yorumları</h3>
+                    <div id="owl-demo1" class="owl-carousel owl-theme mt-4 py-2 mb-4">
+                        @foreach (var item in Model)
+                        {
+                            <div class="item">
+                                <div class="testimonial-content">
+                                    <div class="testimonial">
+                                        <blockquote>
+                                            <q>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
+                                                laudantium
+                                                voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
+                                                Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success .
+                                            </q>
+                                        </blockquote>
+
+                                        <div class="testi-des">
+                                            <div class="test-img">
+                                                <img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/assets/images/team3.jpg" class="img-fluid"
+                                                     alt="client-img">
+                                            </div>
+                                            <div class="peopl align-self">
+                                                <h3>@item.Name @item.Surname</h3>
+                                                <p class="indentity">@item.JobTitle</p>
+                                                <p class="indentity">@item.CompanyName</p>
+                                                <p class="indentity">@item.EMail - @item.PhoneNumber</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

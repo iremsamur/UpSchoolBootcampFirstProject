@@ -20,6 +20,17 @@
     <Property Name="Password" Type="nvarchar" MaxLength="20" />
     <Property Name="Status" Type="bit" />
   </EntityType>
+  <EntityType Name="TblExperiences">
+    <Key>
+      <PropertyRef Name="ExperienceID" />
+    </Key>
+    <Property Name="ExperienceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="MemberID" Type="int" />
+  </EntityType>
   <EntityType Name="TblMember">
     <Key>
       <PropertyRef Name="MemberID" />
@@ -43,6 +54,19 @@
     <Property Name="MessageSubject" Type="nvarchar" MaxLength="50" />
     <Property Name="MessageContent" Type="nvarchar" MaxLength="1000" />
   </EntityType>
+  <EntityType Name="TblReferences">
+    <Key>
+      <PropertyRef Name="ReferenceID" />
+    </Key>
+    <Property Name="ReferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" />
+    <Property Name="EMail" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="MemberID" Type="int" />
+  </EntityType>
   <EntityType Name="TblServices">
     <Key>
       <PropertyRef Name="ServicesID" />
@@ -50,7 +74,7 @@
     <Property Name="ServicesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="100" />
     <Property Name="MemberID" Type="int" />
-    <Property Name="ImageUrl" Type="nvarchar" MaxLength="100" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="TblServicesFeature">
     <Key>
@@ -96,6 +120,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TblExperiences_TblMember">
+    <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+    <End Role="TblExperiences" Type="Self.TblExperiences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="TblExperiences">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblReferences_TblMember">
+    <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+    <End Role="TblReferences" Type="Self.TblReferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="TblReferences">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TblServices_TblMember">
     <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
     <End Role="TblServices" Type="Self.TblServices" Multiplicity="*" />
@@ -123,8 +171,10 @@
   <EntityContainer Name="UpSchoolDbPortfolioModelStoreContainer">
     <EntitySet Name="TblAbout" EntityType="Self.TblAbout" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblExperiences" EntityType="Self.TblExperiences" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblMember" EntityType="Self.TblMember" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblReferences" EntityType="Self.TblReferences" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblServices" EntityType="Self.TblServices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblServicesFeature" EntityType="Self.TblServicesFeature" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblTestimonial" EntityType="Self.TblTestimonial" Schema="dbo" store:Type="Tables" />
@@ -135,6 +185,14 @@
     <AssociationSet Name="FK_TblAbout_TblMember" Association="Self.FK_TblAbout_TblMember">
       <End Role="TblMember" EntitySet="TblMember" />
       <End Role="TblAbout" EntitySet="TblAbout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExperiences_TblMember" Association="Self.FK_TblExperiences_TblMember">
+      <End Role="TblMember" EntitySet="TblMember" />
+      <End Role="TblExperiences" EntitySet="TblExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblReferences_TblMember" Association="Self.FK_TblReferences_TblMember">
+      <End Role="TblMember" EntitySet="TblMember" />
+      <End Role="TblReferences" EntitySet="TblReferences" />
     </AssociationSet>
     <AssociationSet Name="FK_TblServices_TblMember" Association="Self.FK_TblServices_TblMember">
       <End Role="TblMember" EntitySet="TblMember" />
