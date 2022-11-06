@@ -14,6 +14,14 @@ namespace DemoUpSchoolProject.Controllers
         // GET: Statistic
         public ActionResult Index()
         {
+            var mail = Session["MemberMail"].ToString();
+            var loggedUserInformations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+
+            var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == loggedUserInformations.MemberID).FirstOrDefault();
+
+            ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
+
+            ViewBag.loggedUser = loggedUserInformations.MemberName + " " + loggedUserInformations.MemberSurname;
             ViewBag.v1= db.TblTestimonial.Count();//referansların toplam sayısı
             ViewBag.v2 = db.TblTestimonial.Where(x => x.City == "İstanbul").Count();//istanbuldaki referans sayısı
             //yazılım mühendisi haricindeki kişi sayısı

@@ -15,7 +15,23 @@ namespace DemoUpSchoolProject.Controllers
 
         public ActionResult Index()
         {
-            var values = db.TblAbout.ToList();
+            var mail = Session["MemberMail"].ToString();
+            var loggedUserInformations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            var id = loggedUserInformations.MemberID;
+           
+            ViewBag.loggedUser = loggedUserInformations.MemberName + " " + loggedUserInformations.MemberSurname;
+
+            var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == loggedUserInformations.MemberID).FirstOrDefault();
+
+            ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
+
+           
+            ViewBag.experienceCount = db.TblExperiences.Where(x => x.MemberID == id).Count();//deneyim sayısı
+            ViewBag.skillCount = db.TblServices.Where(x => x.MemberID == id).Count();//yetenek sayısı
+            ViewBag.projectCount = db.TblLatestWorks.Where(x => x.MemberID == id).Count();//Proje sayısı
+
+
+            var values = db.TblAbout.Where(x=>x.MemberID==id).ToList();
             return View(values);
         }
 

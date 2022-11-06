@@ -27,7 +27,8 @@ namespace DemoUpSchoolProject.Controllers
             {
                 FormsAuthentication.SetAuthCookie(values.MemberMail, false);
                 Session["MemberMail"] = p.MemberMail;
-                return RedirectToAction("MyPortfolio", "Portfolio");
+                //return RedirectToAction("MyPortfolio", "Portfolio");
+                return RedirectToAction("Index", "About");
             }
             else
             {

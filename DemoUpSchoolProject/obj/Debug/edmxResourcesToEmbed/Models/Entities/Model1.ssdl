@@ -53,6 +53,7 @@
     <Property Name="ProjectDescription" Type="nvarchar(max)" />
     <Property Name="ProjectDate" Type="date" />
     <Property Name="MemberID" Type="int" />
+    <Property Name="GithubLink" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="TblMember">
     <Key>

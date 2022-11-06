@@ -21,7 +21,16 @@ namespace DemoUpSchoolProject.Controllers
 
         //listeleme
         public ActionResult Index()
+
         {
+            var mail = Session["MemberMail"].ToString();
+            var loggedUserInformations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+
+            ViewBag.loggedUser = loggedUserInformations.MemberName + " " + loggedUserInformations.MemberSurname;
+
+            var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == loggedUserInformations.MemberID).FirstOrDefault();
+
+            ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
             var values = db.TblServices.ToList();//tablo içindeki tüm verileri bana liste olarak getirir.
 
             return View(values);//view içinde bu verileri listeletiyorum.

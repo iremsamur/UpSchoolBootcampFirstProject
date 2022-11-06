@@ -17,6 +17,12 @@ namespace DemoUpSchoolProject.Controllers
             ViewBag.name = values.MemberName;
             ViewBag.surname = values.MemberSurname;
             ViewBag.id = values.MemberID;
+
+            var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == values.MemberID).FirstOrDefault();
+
+            ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
+
+            ViewBag.loggedUser = values.MemberName + " " + values.MemberSurname;
             return View();
         }
     }

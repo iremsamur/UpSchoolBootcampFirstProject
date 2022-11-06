@@ -57,6 +57,7 @@
     <Property Name="ProjectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ProjectDate" Type="DateTime" Precision="0" />
     <Property Name="MemberID" Type="Int32" />
+    <Property Name="GithubLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TblLatestWorks1" Relationship="Self.FK_TblLatestWorks_TblLatestWorks" FromRole="TblLatestWorks" ToRole="TblLatestWorks1" />
     <NavigationProperty Name="TblLatestWorks2" Relationship="Self.FK_TblLatestWorks_TblLatestWorks" FromRole="TblLatestWorks1" ToRole="TblLatestWorks" />
     <NavigationProperty Name="TblMember" Relationship="Self.FK_TblLatestWorks_TblMember" FromRole="TblLatestWorks" ToRole="TblMember" />

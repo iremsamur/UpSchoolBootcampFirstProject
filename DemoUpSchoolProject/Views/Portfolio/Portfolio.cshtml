@@ -51,7 +51,7 @@ Author URL: http://w3layouts.com
                             <a class="nav-link" href="/Portfolio/Portfolio">Son Çalışmalarım</a>
                         </li>
                         <li class="nav-item c__active">
-                            <a class="nav-link" href="/Portfolio/Conact">İletişim</a>
+                            <a class="nav-link" href="/Portfolio/Contact">İletişim</a>
                         </li>
                     </ul>
                 </div>
@@ -147,17 +147,18 @@ Author URL: http://w3layouts.com
         <div class="midd-w3 py-5">
             <div class="container py-lg-4 py-md-3">
                 <div class="contact-heading text-center mb-5">
-                    <span class="text">My Portfolio </span>
+                    <span class="text">Benim Portfolio'm' </span>
                     <h3 class="title-big"><span>Son Projelerim</span></h3>
                 </div>
-                <div id="owl-portfolio" class="owl-carousel owl-theme mt-4 py-md-2 mb-4">
+                <div id="owl-portfolio">
                     <div class="item">
                         <div class="portfolio-content">
                             @foreach (var item in Model)
                             {
+                            
 
-                                <a href="#url" class="grid-anchor">
-                                    <img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/images/template1.jpg" class="img-fluid" alt="" />
+                                <a href="@item.GithubLink" class="grid-anchor" alt="Github Linki"target="_blank">
+                                    <img src="@item.ProjectImage" class="img-fluid" alt="" />
 
                                     <div class="template-info">
                                         <h3>@item.ProjectTitle</h3>

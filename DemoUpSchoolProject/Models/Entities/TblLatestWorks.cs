@@ -21,6 +21,7 @@ namespace DemoUpSchoolProject.Models.Entities
         public string ProjectDescription { get; set; }
         public Nullable<System.DateTime> ProjectDate { get; set; }
         public Nullable<int> MemberID { get; set; }
+        public string GithubLink { get; set; }
     
         public virtual TblLatestWorks TblLatestWorks1 { get; set; }
         public virtual TblLatestWorks TblLatestWorks2 { get; set; }

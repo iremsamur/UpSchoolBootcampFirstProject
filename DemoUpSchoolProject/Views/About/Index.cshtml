@@ -3,53 +3,90 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
-    int sayac = 0;
+    //int sayac = 0;
 }
+<link href="~/Content/AdditionalStyleFile/AboutStyle.css" rel="stylesheet" />
 @if (Model.Count == 0)
 {
-    <div  class="alert alert-warning" role="alert">
+    <div class="alert alert-warning" role="alert">
         Kayıt Bulunamadı!!
     </div>
     <br />
 }
 else
 {
-    <table class="table table-bordered">
-        <!--Önce aracın türü sonra biçimlendirme formatı şeklinde bootstrap verilir.
-        türü table, table-bordered ise format şekli -->
-        <tr>
+    foreach (var item in Model)
+    {
+        <section class="h-100 gradient-custom-2">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-lg-9 col-xl-7">
+                        <div class="card">
+                            <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                                    <img src="@item.ImageUrl"
+                                         alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                         style="width: 150px; z-index: 1">
+                                    <a href="/About/UpdateAbout/@item.AboutID" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                       style="z-index: 1;">
+                                        Hakkımda Alanını Düzenle
+                                    </a>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
 
-            <th>#</th>
-            <th>Ad soyad</th>
+                                <div class="ms-3" style="margin-top: 130px;">
+                                    <h5>@item.NameSurname</h5>
 
-            <th>Başlık</th>
-            <th>Sil</th>
-            <th>Güncelle</th>
-        </tr>
-        <!--razor syntax-->
+                                </div>
+                            </div>
+                            <div class="p-4 text-black" style="background-color: #f8f9fa;">
+                                <div class="d-flex justify-content-end text-center py-1">
+                                    <div>
+                                        <p class="mb-1 h5">@ViewBag.projectCount</p>
+                                        <p class="small text-muted mb-0">Proje</p>
+                                    </div>
+                                    <div class="px-3">
+                                        <p class="mb-1 h5">@ViewBag.experienceCount</p>
+                                        <p class="small text-muted mb-0">Deneyim</p>
+                                    </div>
+                                    <div>
+                                        <p class="mb-1 h5">@ViewBag.skillCount</p>
+                                        <p class="small text-muted mb-0">Yetenek</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <div class="card-body p-4 text-black">
+                                <div class="mb-5">
+                                    <p class="lead fw-normal mb-1">About</p>
+                                    <div class="p-4" style="background-color: #f8f9fa;">
+                                        <p class="font-italic mb-1">@item.Title</p>
+                                        <p class="font-italic mb-1">@item.Description</p>
 
-        @foreach (var item in Model)
-        {
-            sayac += 1;
-            <tr>
-
-                <td>@sayac</td>
-                <td>@item.NameSurname</td>
-                <td>@item.Title</td>
-
-                <td><a href="/About/DeleteAbout/@item.AboutID" class="btn btn-danger">Sil</a></td>
-                <td><a href="/About/UpdateAbout/@item.AboutID" class="btn btn-success">Güncelle</a></td>
-                <!--güncellenecek verinin id değerini link ile göndeririz-->
-
-            </tr>
-
-        }
+                                    </div>
+                                </div>
 
 
-    </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    }
+
+
 
 }
 
 
-<a href="/About/AddAbout" class="btn btn-primary">Yeni Hakkında Girişi</a>
+
 

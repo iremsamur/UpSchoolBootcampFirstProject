@@ -57,6 +57,7 @@
           <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
           <ScalarProperty Name="ProjectDate" ColumnName="ProjectDate" />
           <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="GithubLink" ColumnName="GithubLink" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

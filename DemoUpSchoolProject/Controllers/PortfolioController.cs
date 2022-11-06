@@ -17,9 +17,10 @@ namespace DemoUpSchoolProject.Controllers
         }
         public ActionResult Portfolio()
         {
-            var mail = Session["MemberMail"].ToString();
-            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
-            var id = values.MemberID;
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            // var id = values.MemberID;
+            var id = 1;
 
 
             var informations = db.TblLatestWorks.Where(x => x.MemberID == id).ToList();
@@ -42,9 +43,10 @@ namespace DemoUpSchoolProject.Controllers
 
         public PartialViewResult AboutMe()
         {
-            var mail = Session["MemberMail"].ToString();
-            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
-            var id = values.MemberID;
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            //var id = values.MemberID;
+            var id = 1;
 
 
             var informations = db.TblAbout.Where(x => x.MemberID == id).ToList();
@@ -52,9 +54,10 @@ namespace DemoUpSchoolProject.Controllers
         }
         public PartialViewResult MyServices()
         {
-            var mail = Session["MemberMail"].ToString();
-            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
-            var id = values.MemberID;
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            // var id = values.MemberID;
+            var id = 1;
 
 
             var informations = db.TblServices.Where(x => x.MemberID == id).ToList();
@@ -62,9 +65,10 @@ namespace DemoUpSchoolProject.Controllers
         }
         public PartialViewResult MyFeatureSkills()
         {
-            var mail = Session["MemberMail"].ToString();
-            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
-            var id = values.MemberID;
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            //var id = values.MemberID;
+            var id = 1;//sadece kendi portfoliom'un görünmesi için
 
 
             var informations = db.TblServicesFeature.Where(x => x.MemberID == id).ToList();
@@ -72,9 +76,10 @@ namespace DemoUpSchoolProject.Controllers
         }
         public PartialViewResult MyExperiences()
         {
-            var mail = Session["MemberMail"].ToString();
-            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
-            var id = values.MemberID;
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            //var id = values.MemberID;
+            var id = 1;
 
 
             var informations = db.TblExperiences.Where(x => x.MemberID == id).ToList();
@@ -82,9 +87,10 @@ namespace DemoUpSchoolProject.Controllers
         }
         public PartialViewResult MyReferences()
         {
-            var mail = Session["MemberMail"].ToString();
-            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
-            var id = values.MemberID;
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            //var id = values.MemberID;
+            var id = 1;
 
 
             var informations = db.TblReferences.Where(x => x.MemberID == id).ToList();

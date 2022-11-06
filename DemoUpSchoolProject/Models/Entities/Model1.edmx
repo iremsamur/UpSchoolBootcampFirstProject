@@ -58,6 +58,7 @@
           <Property Name="ProjectDescription" Type="nvarchar(max)" />
           <Property Name="ProjectDate" Type="date" />
           <Property Name="MemberID" Type="int" />
+          <Property Name="GithubLink" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="TblMember">
           <Key>
@@ -328,6 +329,7 @@
           <Property Name="ProjectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProjectDate" Type="DateTime" Precision="0" />
           <Property Name="MemberID" Type="Int32" />
+          <Property Name="GithubLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblLatestWorks1" Relationship="Self.FK_TblLatestWorks_TblLatestWorks" FromRole="TblLatestWorks" ToRole="TblLatestWorks1" />
           <NavigationProperty Name="TblLatestWorks2" Relationship="Self.FK_TblLatestWorks_TblLatestWorks" FromRole="TblLatestWorks1" ToRole="TblLatestWorks" />
           <NavigationProperty Name="TblMember" Relationship="Self.FK_TblLatestWorks_TblMember" FromRole="TblLatestWorks" ToRole="TblMember" />
@@ -610,6 +612,7 @@
                 <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
                 <ScalarProperty Name="ProjectDate" ColumnName="ProjectDate" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="GithubLink" ColumnName="GithubLink" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

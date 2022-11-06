@@ -14,7 +14,15 @@ namespace DemoUpSchoolProject.Controllers
 
         public ActionResult Inbox()
         {
+            
             var mail = Session["MemberMail"].ToString();
+            var loggedUserInformations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+
+            ViewBag.loggedUser = loggedUserInformations.MemberName + " " + loggedUserInformations.MemberSurname;
+           
+            var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == loggedUserInformations.MemberID).FirstOrDefault();
+
+            ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
             var values = db.TblMessage.Where(x => x.ReceiverMail == mail).ToList();
             return View(values);
         }
@@ -22,6 +30,13 @@ namespace DemoUpSchoolProject.Controllers
         public ActionResult Outbox()
         {
             var mail = Session["MemberMail"].ToString();
+            var loggedUserInformations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+
+            ViewBag.loggedUser = loggedUserInformations.MemberName + " " + loggedUserInformations.MemberSurname;
+            var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == loggedUserInformations.MemberID).FirstOrDefault();
+
+            ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
+
             var values = db.TblMessage.Where(x => x.SenderMail == mail).ToList();
             return View(values);
         }
@@ -35,7 +50,14 @@ namespace DemoUpSchoolProject.Controllers
         [HttpPost]
         public ActionResult SendMessage(TblMessage p)
         {
+
             var mail = Session["MemberMail"].ToString();
+            var loggedUserInformations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+
+            ViewBag.loggedUser = loggedUserInformations.MemberName + " " + loggedUserInformations.MemberSurname;
+            var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == loggedUserInformations.MemberID).FirstOrDefault();
+
+            ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
 
             p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             p.SenderMail = mail;
