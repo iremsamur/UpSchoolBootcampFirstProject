@@ -20,6 +20,16 @@
     <Property Name="Password" Type="nvarchar" MaxLength="20" />
     <Property Name="Status" Type="bit" />
   </EntityType>
+  <EntityType Name="TblContact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSurname" Type="nvarchar" MaxLength="100" />
+    <Property Name="EMail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="100" />
+    <Property Name="Message" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="TblExperiences">
     <Key>
       <PropertyRef Name="ExperienceID" />
@@ -29,6 +39,19 @@
     <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
     <Property Name="Duration" Type="nvarchar" MaxLength="50" />
     <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="MemberID" Type="int" />
+    <Property Name="CompanyLogo" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TblLatestWorks">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProjectImage" Type="nvarchar(max)" />
+    <Property Name="ProjectDescription" Type="nvarchar(max)" />
+    <Property Name="ProjectDate" Type="date" />
     <Property Name="MemberID" Type="int" />
   </EntityType>
   <EntityType Name="TblMember">
@@ -66,6 +89,7 @@
     <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
     <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
     <Property Name="MemberID" Type="int" />
+    <Property Name="Comment" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="TblServices">
     <Key>
@@ -132,6 +156,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TblLatestWorks_TblLatestWorks">
+    <End Role="TblLatestWorks" Type="Self.TblLatestWorks" Multiplicity="1" />
+    <End Role="TblLatestWorks1" Type="Self.TblLatestWorks" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TblLatestWorks">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="TblLatestWorks1">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblLatestWorks_TblMember">
+    <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+    <End Role="TblLatestWorks" Type="Self.TblLatestWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="TblLatestWorks">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TblReferences_TblMember">
     <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
     <End Role="TblReferences" Type="Self.TblReferences" Multiplicity="*" />
@@ -171,7 +219,9 @@
   <EntityContainer Name="UpSchoolDbPortfolioModelStoreContainer">
     <EntitySet Name="TblAbout" EntityType="Self.TblAbout" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblContact" EntityType="Self.TblContact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblExperiences" EntityType="Self.TblExperiences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblLatestWorks" EntityType="Self.TblLatestWorks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblMember" EntityType="Self.TblMember" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblReferences" EntityType="Self.TblReferences" Schema="dbo" store:Type="Tables" />
@@ -189,6 +239,14 @@
     <AssociationSet Name="FK_TblExperiences_TblMember" Association="Self.FK_TblExperiences_TblMember">
       <End Role="TblMember" EntitySet="TblMember" />
       <End Role="TblExperiences" EntitySet="TblExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblLatestWorks_TblLatestWorks" Association="Self.FK_TblLatestWorks_TblLatestWorks">
+      <End Role="TblLatestWorks" EntitySet="TblLatestWorks" />
+      <End Role="TblLatestWorks1" EntitySet="TblLatestWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblLatestWorks_TblMember" Association="Self.FK_TblLatestWorks_TblMember">
+      <End Role="TblMember" EntitySet="TblMember" />
+      <End Role="TblLatestWorks" EntitySet="TblLatestWorks" />
     </AssociationSet>
     <AssociationSet Name="FK_TblReferences_TblMember" Association="Self.FK_TblReferences_TblMember">
       <End Role="TblMember" EntitySet="TblMember" />

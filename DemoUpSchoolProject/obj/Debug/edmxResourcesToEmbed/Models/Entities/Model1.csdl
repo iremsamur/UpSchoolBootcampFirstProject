@@ -23,6 +23,16 @@
     <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" />
   </EntityType>
+  <EntityType Name="TblContact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="TblExperiences">
     <Key>
       <PropertyRef Name="ExperienceID" />
@@ -33,7 +43,23 @@
     <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MemberID" Type="Int32" />
+    <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TblMember" Relationship="Self.FK_TblExperiences_TblMember" FromRole="TblExperiences" ToRole="TblMember" />
+  </EntityType>
+  <EntityType Name="TblLatestWorks">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectDate" Type="DateTime" Precision="0" />
+    <Property Name="MemberID" Type="Int32" />
+    <NavigationProperty Name="TblLatestWorks1" Relationship="Self.FK_TblLatestWorks_TblLatestWorks" FromRole="TblLatestWorks" ToRole="TblLatestWorks1" />
+    <NavigationProperty Name="TblLatestWorks2" Relationship="Self.FK_TblLatestWorks_TblLatestWorks" FromRole="TblLatestWorks1" ToRole="TblLatestWorks" />
+    <NavigationProperty Name="TblMember" Relationship="Self.FK_TblLatestWorks_TblMember" FromRole="TblLatestWorks" ToRole="TblMember" />
   </EntityType>
   <EntityType Name="TblMember">
     <Key>
@@ -46,6 +72,7 @@
     <Property Name="MemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="TblAbout" Relationship="Self.FK_TblAbout_TblMember" FromRole="TblMember" ToRole="TblAbout" />
     <NavigationProperty Name="TblExperiences" Relationship="Self.FK_TblExperiences_TblMember" FromRole="TblMember" ToRole="TblExperiences" />
+    <NavigationProperty Name="TblLatestWorks" Relationship="Self.FK_TblLatestWorks_TblMember" FromRole="TblMember" ToRole="TblLatestWorks" />
     <NavigationProperty Name="TblReferences" Relationship="Self.FK_TblReferences_TblMember" FromRole="TblMember" ToRole="TblReferences" />
     <NavigationProperty Name="TblServices" Relationship="Self.FK_TblServices_TblMember" FromRole="TblMember" ToRole="TblServices" />
     <NavigationProperty Name="TblServicesFeature" Relationship="Self.FK_TblServicesFeature_TblMember" FromRole="TblMember" ToRole="TblServicesFeature" />
@@ -75,6 +102,7 @@
     <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MemberID" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TblMember" Relationship="Self.FK_TblReferences_TblMember" FromRole="TblReferences" ToRole="TblMember" />
   </EntityType>
   <EntityType Name="TblServices">
@@ -144,6 +172,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TblLatestWorks_TblLatestWorks">
+    <End Role="TblLatestWorks" Type="Self.TblLatestWorks" Multiplicity="1" />
+    <End Role="TblLatestWorks1" Type="Self.TblLatestWorks" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TblLatestWorks">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="TblLatestWorks1">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblLatestWorks_TblMember">
+    <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+    <End Role="TblLatestWorks" Type="Self.TblLatestWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="TblLatestWorks">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TblReferences_TblMember">
     <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
     <End Role="TblReferences" Type="Self.TblReferences" Multiplicity="*" />
@@ -180,10 +232,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="UpSchoolDbPortfolioEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="UpSchoolDbPortfolioEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="TblAbout" EntityType="Self.TblAbout" />
     <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" />
+    <EntitySet Name="TblContact" EntityType="Self.TblContact" />
     <EntitySet Name="TblExperiences" EntityType="Self.TblExperiences" />
+    <EntitySet Name="TblLatestWorks" EntityType="Self.TblLatestWorks" />
     <EntitySet Name="TblMember" EntityType="Self.TblMember" />
     <EntitySet Name="TblMessage" EntityType="Self.TblMessage" />
     <EntitySet Name="TblReferences" EntityType="Self.TblReferences" />
@@ -201,6 +255,14 @@
     <AssociationSet Name="FK_TblExperiences_TblMember" Association="Self.FK_TblExperiences_TblMember">
       <End Role="TblMember" EntitySet="TblMember" />
       <End Role="TblExperiences" EntitySet="TblExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblLatestWorks_TblLatestWorks" Association="Self.FK_TblLatestWorks_TblLatestWorks">
+      <End Role="TblLatestWorks" EntitySet="TblLatestWorks" />
+      <End Role="TblLatestWorks1" EntitySet="TblLatestWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblLatestWorks_TblMember" Association="Self.FK_TblLatestWorks_TblMember">
+      <End Role="TblMember" EntitySet="TblMember" />
+      <End Role="TblLatestWorks" EntitySet="TblLatestWorks" />
     </AssociationSet>
     <AssociationSet Name="FK_TblReferences_TblMember" Association="Self.FK_TblReferences_TblMember">
       <End Role="TblMember" EntitySet="TblMember" />

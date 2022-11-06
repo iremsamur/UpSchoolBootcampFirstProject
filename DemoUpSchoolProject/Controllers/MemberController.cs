@@ -9,7 +9,7 @@ namespace DemoUpSchoolProject.Controllers
 {
     public class MemberController : Controller
     {
-        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
+        UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
         public ActionResult Index()
         {
             var mail = Session["MemberMail"].ToString();

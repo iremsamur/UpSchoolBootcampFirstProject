@@ -10,7 +10,7 @@ namespace DemoUpSchoolProject.Controllers
     public class MessageController : Controller
     {
         // GET: Message
-        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
+        UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
 
         public ActionResult Inbox()
         {

@@ -9,7 +9,7 @@ namespace DemoUpSchoolProject.Controllers
 {
     public class UserController : Controller
     {
-        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
+        UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
         // GET: User
         public ActionResult Index()
         {

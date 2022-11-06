@@ -11,7 +11,7 @@ namespace DemoUpSchoolProject.Controllers
 {
     public class RegisterController : Controller
     {
-        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
+        UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
         // GET: Register
 
         [HttpGet]

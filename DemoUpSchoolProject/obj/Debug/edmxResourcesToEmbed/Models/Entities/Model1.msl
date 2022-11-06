@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="UpSchoolDbPortfolioModelStoreContainer" CdmEntityContainer="UpSchoolDbPortfolioEntities1">
+  <EntityContainerMapping StorageEntityContainer="UpSchoolDbPortfolioModelStoreContainer" CdmEntityContainer="UpSchoolDbPortfolioEntities">
     <EntitySetMapping Name="TblAbout">
       <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblAbout">
         <MappingFragment StoreEntitySet="TblAbout">
@@ -23,6 +23,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TblContact">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblContact">
+        <MappingFragment StoreEntitySet="TblContact">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TblExperiences">
       <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblExperiences">
         <MappingFragment StoreEntitySet="TblExperiences">
@@ -31,6 +42,20 @@
           <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
           <ScalarProperty Name="Duration" ColumnName="Duration" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblLatestWorks">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblLatestWorks">
+        <MappingFragment StoreEntitySet="TblLatestWorks">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+          <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+          <ScalarProperty Name="ProjectImage" ColumnName="ProjectImage" />
+          <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
+          <ScalarProperty Name="ProjectDate" ColumnName="ProjectDate" />
           <ScalarProperty Name="MemberID" ColumnName="MemberID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -71,6 +96,7 @@
           <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
           <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
           <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

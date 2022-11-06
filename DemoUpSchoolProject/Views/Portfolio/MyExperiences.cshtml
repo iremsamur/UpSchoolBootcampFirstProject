@@ -16,7 +16,8 @@
                         @foreach (var item in Model)
                         {
                             <div class="reward-item">
-                                <div class="reward-item-photo" style="font-size:medium;"><img src="~/Templates/iportfolio-starter_Free11-08-2020_2100992022/iportfolio-starter/assets/images/banner.png" alt="" class="img-fluid">@item.CompanyName</div>
+                                <div class="reward-item-photo" style="font-size:medium;"><img src="@item.CompanyLogo" alt="@item.CompanyName" class="img-fluid">@item.CompanyName</div>
+
 
                                 <div class="reward-item-detail">
                                     <span class="reward-item-title">@item.JobTitle</span>

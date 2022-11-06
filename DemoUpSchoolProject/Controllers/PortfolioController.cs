@@ -9,7 +9,7 @@ namespace DemoUpSchoolProject.Controllers
 {
     public class PortfolioController : Controller
     {
-        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();
+        UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
         // GET: Portfolio
         public ActionResult MyPortfolio()
         {
@@ -17,10 +17,26 @@ namespace DemoUpSchoolProject.Controllers
         }
         public ActionResult Portfolio()
         {
-            return View();
+            var mail = Session["MemberMail"].ToString();
+            var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            var id = values.MemberID;
+
+
+            var informations = db.TblLatestWorks.Where(x => x.MemberID == id).ToList();
+
+            return View(informations);
         }
+        [HttpGet]
         public ActionResult Contact()
         {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Contact(TblContact contact)
+        {
+            db.TblContact.Add(contact);
+            db.SaveChanges();
             return View();
         }
 
@@ -74,6 +90,21 @@ namespace DemoUpSchoolProject.Controllers
             var informations = db.TblReferences.Where(x => x.MemberID == id).ToList();
             return PartialView(informations);
         }
+        
+        [HttpGet]
+        public PartialViewResult ContactPage()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult ContactPage(TblContact contact)
+        {
+            db.TblContact.Add(contact);
+            db.SaveChanges();
+
+            return PartialView();
+        }
+        
 
     }
 }

@@ -19,6 +19,7 @@ namespace DemoUpSchoolProject.Models.Entities
         {
             this.TblAbout = new HashSet<TblAbout>();
             this.TblExperiences = new HashSet<TblExperiences>();
+            this.TblLatestWorks = new HashSet<TblLatestWorks>();
             this.TblReferences = new HashSet<TblReferences>();
             this.TblServices = new HashSet<TblServices>();
             this.TblServicesFeature = new HashSet<TblServicesFeature>();
@@ -34,6 +35,8 @@ namespace DemoUpSchoolProject.Models.Entities
         public virtual ICollection<TblAbout> TblAbout { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblExperiences> TblExperiences { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblLatestWorks> TblLatestWorks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblReferences> TblReferences { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

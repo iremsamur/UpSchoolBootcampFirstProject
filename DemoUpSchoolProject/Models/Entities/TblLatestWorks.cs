@@ -12,18 +12,18 @@ namespace DemoUpSchoolProject.Models.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class TblReferences
+    public partial class TblLatestWorks
     {
-        public int ReferenceID { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string PhoneNumber { get; set; }
-        public string EMail { get; set; }
-        public string CompanyName { get; set; }
-        public string JobTitle { get; set; }
+        public int ProjectID { get; set; }
+        public string ProjectTitle { get; set; }
+        public string ProjectType { get; set; }
+        public string ProjectImage { get; set; }
+        public string ProjectDescription { get; set; }
+        public Nullable<System.DateTime> ProjectDate { get; set; }
         public Nullable<int> MemberID { get; set; }
-        public string Comment { get; set; }
     
+        public virtual TblLatestWorks TblLatestWorks1 { get; set; }
+        public virtual TblLatestWorks TblLatestWorks2 { get; set; }
         public virtual TblMember TblMember { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace DemoUpSchoolProject.Controllers
         Remove
         Where
         */
-        UpSchoolDbPortfolioEntities1 db = new UpSchoolDbPortfolioEntities1();//modelimi tanımlıyorum.
+        UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();//modelimi tanımlıyorum.
 
         //listeleme
         public ActionResult Index()
