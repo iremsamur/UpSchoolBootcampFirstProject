@@ -1,0 +1,23 @@
+﻿@model DemoUpSchoolProject.Models.Entities.TblServices
+@{
+    ViewBag.Title = "UpdateSkill";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Yetenek Güncelle</h2>
+<br />
+@using (Html.BeginForm("UpdateSkill", "MySkills", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.ServicesID, new { @class = "form-control" })
+    <label>Kullanılan Teknoloji (Yetenek)</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form form-control" })
+
+
+    <label>Resim</label>
+    <input type="file" name="ImageUrl" />
+    <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+
+
+}
+

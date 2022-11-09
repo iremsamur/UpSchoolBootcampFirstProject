@@ -136,6 +136,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\MySkillsController.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
@@ -256,6 +257,9 @@
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\js\main.js" />
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\js\security.js" />
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\readme.txt" />
+    <Content Include="Templates\images\1200px-Havelsan_logo.svg.png" />
+    <Content Include="Templates\images\big-btarge.png" />
+    <Content Include="Templates\images\teknopar-endustriyel-otomasyon-as.jpeg" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\css\style-starter.css" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\about.jpg" />
@@ -874,6 +878,10 @@
     <Content Include="Templates\MajesticAdmin-Free-Bootstrap-Admin-Template-master\template\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="Templates\MajesticAdmin-Free-Bootstrap-Admin-Template-master\template\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="Templates\MajesticAdmin-Free-Bootstrap-Admin-Template-master\template\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Views\Experiences\AddExperience.cshtml" />
+    <Content Include="Views\MySkills\Index.cshtml" />
+    <Content Include="Views\MySkills\AddSkill.cshtml" />
+    <Content Include="Views\MySkills\UpdateSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

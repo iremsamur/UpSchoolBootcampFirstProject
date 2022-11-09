@@ -1,29 +1,25 @@
-﻿@model  DemoUpSchoolProject.Models.Entities.TblExperiences
+﻿@model DemoUpSchoolProject.Models.Entities.TblExperiences
 @{
-    ViewBag.Title = "UpdateExperience";
+    ViewBag.Title = "AddExperience";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<h2>Deneyimi Güncelle</h2>
-
-@using (Html.BeginForm("UpdateExperience", "Experiences", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<h2>Yeni Deneyim Ekle</h2>
+<br />
+@using (Html.BeginForm("AddExperience", "Experiences", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.HiddenFor(x => x.ExperienceID, new { @class = "form-control" })
     <label>Deneyim Yapılan Şirketin Adı</label>
     @Html.TextBoxFor(x => x.CompanyName, new { @class = "form form-control" })
     <label>Pozisyon Adı</label>
-
     @Html.TextBoxFor(x => x.JobTitle, new { @class = "form form-control" })
     <label>Açıklama</label>
-   
     @Html.TextBoxFor(x => x.Description, new { @class = "form form-control" })
     <label>Başlangıç- Bitiş Tarihi</label>
-   
     @Html.TextBoxFor(x => x.Duration, new { @class = "form form-control" })
     <label>Şirket Logosu</label>
-    <input type="file" name="CompanyLogo" />
+    <input type="file" name="CompanyLogo"/>
     <br />
-    <input type="submit" value="Güncelle" class="btn btn-success" />
+    <input type="submit" value="Kaydet" class="btn btn-primary"/>
 
 
 }

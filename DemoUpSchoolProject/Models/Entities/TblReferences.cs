@@ -23,6 +23,7 @@ namespace DemoUpSchoolProject.Models.Entities
         public string JobTitle { get; set; }
         public Nullable<int> MemberID { get; set; }
         public string Comment { get; set; }
+        public string Image { get; set; }
     
         public virtual TblMember TblMember { get; set; }
     }

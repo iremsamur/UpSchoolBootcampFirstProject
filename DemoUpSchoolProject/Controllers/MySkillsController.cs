@@ -8,34 +8,35 @@ using System.Web.Mvc;
 
 namespace DemoUpSchoolProject.Controllers
 {
-    public class ExperiencesController : Controller
+    public class MySkillsController : Controller
     {
+
         UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
         public ActionResult Index()
         {
             var mail = Session["MemberMail"].ToString();
             var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
             var id = values.MemberID;
-           
+
 
             ViewBag.loggedUser = values.MemberName + " " + values.MemberSurname;
-            var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == values.MemberID).FirstOrDefault();
+            var loggedUserAbout = db.TblServices.Where(x => x.MemberID == values.MemberID).FirstOrDefault();
 
             ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
 
 
-            var informations = db.TblExperiences.Where(x => x.MemberID == id).ToList();
+            var informations = db.TblServices.Where(x => x.MemberID == id).ToList();
 
             return View(informations);
 
-          
-            
+
+
         }
-        public ActionResult DeleteExperience(int ID)//entity framework içinde gönderilen parametrenin ismi ID olmak zorundadır.
-                                                 //ID gönderilecekse ID olmalıdır. x olamaz.
+        public ActionResult DeleteSkill(int ID)//entity framework içinde gönderilen parametrenin ismi ID olmak zorundadır.
+                                                    //ID gönderilecekse ID olmalıdır. x olamaz.
         {
-            var values = db.TblExperiences.Find(ID);//o id ile silinecek elemanı bulur
-            db.TblExperiences.Remove(values);//bulduğu değeri siler.
+            var values = db.TblServices.Find(ID);//o id ile silinecek elemanı bulur
+            db.TblServices.Remove(values);//bulduğu değeri siler.
             db.SaveChanges();
             return RedirectToAction("Index");
 
@@ -44,7 +45,7 @@ namespace DemoUpSchoolProject.Controllers
         //önce güncelleyeceğimiz verinin verilerini sayfaya buradan taşırız.
 
         [HttpGet]
-        public ActionResult UpdateExperience(int ID)
+        public ActionResult UpdateSkill(int ID)
         {
             var values = db.TblExperiences.Find(ID);
             return View(values);
@@ -52,9 +53,9 @@ namespace DemoUpSchoolProject.Controllers
         }
         //şimdi güncelleme işlemini yapacak httppost metodunu yazarız.
         [HttpPost]
-        public ActionResult UpdateExperience(TblExperiences p)
+        public ActionResult UpdateSkill(TblServices p)
         {
-            
+
             //upload image
             if (Request.Files.Count > 0)
             {
@@ -62,7 +63,7 @@ namespace DemoUpSchoolProject.Controllers
                 string fileExtension = Path.GetExtension(Request.Files[0].FileName);
                 string path = "~/Templates/images" + fileName + fileExtension;
                 Request.Files[0].SaveAs(Server.MapPath(path));//dosyayı farklı kaydet
-                p.CompanyLogo = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
+                p.ImageUrl = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
                 //~ olmadan yazılır. ~ olursa resim gelmez
 
 
@@ -70,44 +71,36 @@ namespace DemoUpSchoolProject.Controllers
             }
             else
             {
-                var values2 = db.TblExperiences.Find(p.ExperienceID);
-                p.CompanyLogo = values2.CompanyLogo;
+                var values2 = db.TblServices.Find(p.ServicesID);
+                p.ImageUrl = values2.ImageUrl;
             }
             var mail = Session["MemberMail"].ToString();
             var informations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
             var id = informations.MemberID;
             p.MemberID = id;
 
-            var values = db.TblExperiences.Find(p.ExperienceID);
+            var values = db.TblServices.Find(p.ServicesID);
             //güncelleme
-            values.JobTitle = p.JobTitle;
+            values.Title = p.Title;
             values.MemberID = p.MemberID;
-            values.CompanyName = p.CompanyName;
-            values.Duration = p.Duration;
-            values.CompanyLogo = p.CompanyLogo;
-            values.Description = p.Description;
+           
             db.SaveChanges();
 
             return RedirectToAction("Index");
-           
+
 
         }
-        public ActionResult ShowDetailExperience(int ID)
-        {
-            var values = db.TblExperiences.Where(x=>x.ExperienceID==ID).ToList();
-            return View(values);
-
-        }
+       
 
         [HttpGet]
-        public ActionResult AddExperience()
+        public ActionResult AddSkill()
         {
             //Bu metod sadece sayfa yüklendiği zaman çalışarak boş değer eklemenin önüne geçilecek
             return View();
 
         }
         [HttpPost]//post işleminde ise bu metodun çalışması sağlanır.
-        public ActionResult AddExperience(TblExperiences p)
+        public ActionResult AddSkill(TblServices p)
         {
             //upload image
             if (Request.Files.Count > 0)
@@ -116,7 +109,7 @@ namespace DemoUpSchoolProject.Controllers
                 string fileExtension = Path.GetExtension(Request.Files[0].FileName);
                 string path = "~/Templates/images" + fileName + fileExtension;
                 Request.Files[0].SaveAs(Server.MapPath(path));//dosyayı farklı kaydet
-                p.CompanyLogo = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
+                p.ImageUrl = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
                 //~ olmadan yazılır. ~ olursa resim gelmez
 
 
@@ -124,13 +117,12 @@ namespace DemoUpSchoolProject.Controllers
             }
             var mail = Session["MemberMail"].ToString();
             var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
-             var id = values.MemberID;
+            var id = values.MemberID;
             p.MemberID = id;
-            db.TblExperiences.Add(p);
+            db.TblServices.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");
 
         }
-
     }
 }

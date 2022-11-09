@@ -91,6 +91,7 @@
     <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
     <Property Name="MemberID" Type="int" />
     <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="TblServices">
     <Key>
