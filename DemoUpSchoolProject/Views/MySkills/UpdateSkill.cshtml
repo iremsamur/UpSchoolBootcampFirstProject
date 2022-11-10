@@ -6,15 +6,19 @@
 
 <h2>Yetenek Güncelle</h2>
 <br />
+<br />
 @using (Html.BeginForm("UpdateSkill", "MySkills", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(x => x.ServicesID, new { @class = "form-control" })
     <label>Kullanılan Teknoloji (Yetenek)</label>
     @Html.TextBoxFor(x => x.Title, new { @class = "form form-control" })
-
+    <br />
 
     <label>Resim</label>
+    <br />
+    <br />
     <input type="file" name="ImageUrl" />
+    <br />
     <br />
     <input type="submit" value="Kaydet" class="btn btn-primary" />
 

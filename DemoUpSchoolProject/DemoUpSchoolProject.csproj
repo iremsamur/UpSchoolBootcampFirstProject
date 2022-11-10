@@ -258,8 +258,12 @@
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\js\security.js" />
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\readme.txt" />
     <Content Include="Templates\images\1200px-Havelsan_logo.svg.png" />
+    <Content Include="Templates\images\business.jpeg" />
+    <Content Include="Templates\images\software.jpg" />
     <Content Include="Templates\images\big-btarge.png" />
+    <Content Include="Templates\images\softwareeducations.jpeg" />
     <Content Include="Templates\images\teknopar-endustriyel-otomasyon-as.jpeg" />
+    <Content Include="Templates\images\web.jpg" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\css\style-starter.css" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Templates\iportfolio-starter_Free11-08-2020_2100992022\iportfolio-starter\assets\images\about.jpg" />

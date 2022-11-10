@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -73,8 +74,30 @@ namespace DemoUpSchoolProject.Controllers
         [HttpPost]
         public ActionResult UpdateAbout(TblAbout p)
         {
+            if (Request.Files.Count > 0)
+            {
+                string fileName = Path.GetFileName(Request.Files[0].FileName);//dosyanın adını alır. Yüklenen dosyalardan
+                string fileExtension = Path.GetExtension(Request.Files[0].FileName);
+                string path = "~/Templates/images" + fileName + fileExtension;
+                Request.Files[0].SaveAs(Server.MapPath(path));//dosyayı farklı kaydet
+                p.ImageUrl = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
+                //~ olmadan yazılır. ~ olursa resim gelmez
+
+
+
+            }
+            else
+            {
+                var values2 = db.TblAbout.Find(p.AboutID);
+                p.ImageUrl= values2.ImageUrl;
+            }
             var values = db.TblAbout.Find(p.AboutID);//modelden gelen id değerini alır.
             //güncelleme
+            var mail = Session["MemberMail"].ToString();
+            var informations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            var id = informations.MemberID;
+            p.MemberID = id;
+
             values.Description = p.Description;
             values.ImageUrl = p.ImageUrl;
             values.NameSurname = p.NameSurname;

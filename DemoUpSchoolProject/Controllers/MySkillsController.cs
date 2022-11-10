@@ -47,7 +47,7 @@ namespace DemoUpSchoolProject.Controllers
         [HttpGet]
         public ActionResult UpdateSkill(int ID)
         {
-            var values = db.TblExperiences.Find(ID);
+            var values = db.TblServices.Find(ID);
             return View(values);
 
         }
