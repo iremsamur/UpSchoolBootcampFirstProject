@@ -34,6 +34,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TblEducationInformations">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblEducationInformations">
+        <MappingFragment StoreEntitySet="TblEducationInformations">
+          <ScalarProperty Name="EducationInformationID" ColumnName="EducationInformationID" />
+          <ScalarProperty Name="EducationOrganizationName" ColumnName="EducationOrganizationName" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TblExperiences">
       <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblExperiences">
         <MappingFragment StoreEntitySet="TblExperiences">
@@ -44,6 +55,26 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="MemberID" ColumnName="MemberID" />
           <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblHobby">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblHobby">
+        <MappingFragment StoreEntitySet="TblHobby">
+          <ScalarProperty Name="HobbyID" ColumnName="HobbyID" />
+          <ScalarProperty Name="HobbyName" ColumnName="HobbyName" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblLanguage">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblLanguage">
+        <MappingFragment StoreEntitySet="TblLanguage">
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="LanguageLevel" ColumnName="LanguageLevel" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -83,6 +114,21 @@
           <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
           <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
           <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblOtherExperiences">
+      <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblOtherExperiences">
+        <MappingFragment StoreEntitySet="TblOtherExperiences">
+          <ScalarProperty Name="ExperienceID" ColumnName="ExperienceID" />
+          <ScalarProperty Name="ExperienceTitle" ColumnName="ExperienceTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="OrgnizationName" ColumnName="OrgnizationName" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

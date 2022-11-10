@@ -12,8 +12,8 @@
           <Property Name="AboutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameSurname" Type="nvarchar" MaxLength="30" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" />
-          <Property Name="ImageUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
           <Property Name="MemberID" Type="int" />
         </EntityType>
         <EntityType Name="TblAdmin">
@@ -35,6 +35,16 @@
           <Property Name="Subject" Type="nvarchar" MaxLength="100" />
           <Property Name="Message" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="TblEducationInformations">
+          <Key>
+            <PropertyRef Name="EducationInformationID" />
+          </Key>
+          <Property Name="EducationInformationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducationOrganizationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Duration" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="MemberID" Type="int" />
+        </EntityType>
         <EntityType Name="TblExperiences">
           <Key>
             <PropertyRef Name="ExperienceID" />
@@ -46,6 +56,24 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="MemberID" Type="int" />
           <Property Name="CompanyLogo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblHobby">
+          <Key>
+            <PropertyRef Name="HobbyID" />
+          </Key>
+          <Property Name="HobbyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HobbyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="MemberID" Type="int" />
+        </EntityType>
+        <EntityType Name="TblLanguage">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+          </Key>
+          <Property Name="LanguageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LanguageLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberID" Type="int" />
         </EntityType>
         <EntityType Name="TblLatestWorks">
           <Key>
@@ -82,6 +110,20 @@
           <Property Name="MessageDate" Type="date" />
           <Property Name="MessageSubject" Type="nvarchar" MaxLength="50" />
           <Property Name="MessageContent" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="TblOtherExperiences">
+          <Key>
+            <PropertyRef Name="ExperienceID" />
+          </Key>
+          <Property Name="ExperienceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExperienceTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Duration" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="OrgnizationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="MemberID" Type="int" />
         </EntityType>
         <EntityType Name="TblReferences">
           <Key>
@@ -151,6 +193,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblEducationInformations_TblEducationInformations">
+          <End Role="TblEducationInformations" Type="Self.TblEducationInformations" Multiplicity="1" />
+          <End Role="TblEducationInformations1" Type="Self.TblEducationInformations" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblEducationInformations">
+              <PropertyRef Name="EducationInformationID" />
+            </Principal>
+            <Dependent Role="TblEducationInformations1">
+              <PropertyRef Name="EducationInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblEducationInformations_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+          <End Role="TblEducationInformations" Type="Self.TblEducationInformations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TblEducationInformations">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblExperiences_TblMember">
           <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
           <End Role="TblExperiences" Type="Self.TblExperiences" Multiplicity="*" />
@@ -159,6 +225,54 @@
               <PropertyRef Name="MemberID" />
             </Principal>
             <Dependent Role="TblExperiences">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblHobby_TblHobby">
+          <End Role="TblHobby" Type="Self.TblHobby" Multiplicity="1" />
+          <End Role="TblHobby1" Type="Self.TblHobby" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblHobby">
+              <PropertyRef Name="HobbyID" />
+            </Principal>
+            <Dependent Role="TblHobby1">
+              <PropertyRef Name="HobbyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblHobby_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+          <End Role="TblHobby" Type="Self.TblHobby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TblHobby">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLanguage_TblLanguage">
+          <End Role="TblLanguage" Type="Self.TblLanguage" Multiplicity="1" />
+          <End Role="TblLanguage1" Type="Self.TblLanguage" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblLanguage">
+              <PropertyRef Name="LanguageID" />
+            </Principal>
+            <Dependent Role="TblLanguage1">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLanguage_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+          <End Role="TblLanguage" Type="Self.TblLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TblLanguage">
               <PropertyRef Name="MemberID" />
             </Dependent>
           </ReferentialConstraint>
@@ -184,6 +298,30 @@
             </Principal>
             <Dependent Role="TblLatestWorks">
               <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOtherExperiences_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+          <End Role="TblOtherExperiences" Type="Self.TblOtherExperiences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TblOtherExperiences">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOtherExperiences_TblOtherExperiences">
+          <End Role="TblOtherExperiences" Type="Self.TblOtherExperiences" Multiplicity="1" />
+          <End Role="TblOtherExperiences1" Type="Self.TblOtherExperiences" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblOtherExperiences">
+              <PropertyRef Name="ExperienceID" />
+            </Principal>
+            <Dependent Role="TblOtherExperiences1">
+              <PropertyRef Name="ExperienceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -227,10 +365,14 @@
           <EntitySet Name="TblAbout" EntityType="Self.TblAbout" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblContact" EntityType="Self.TblContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblEducationInformations" EntityType="Self.TblEducationInformations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblExperiences" EntityType="Self.TblExperiences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblHobby" EntityType="Self.TblHobby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblLanguage" EntityType="Self.TblLanguage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblLatestWorks" EntityType="Self.TblLatestWorks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMember" EntityType="Self.TblMember" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblOtherExperiences" EntityType="Self.TblOtherExperiences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblReferences" EntityType="Self.TblReferences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblServices" EntityType="Self.TblServices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblServicesFeature" EntityType="Self.TblServicesFeature" Schema="dbo" store:Type="Tables" />
@@ -243,9 +385,33 @@
             <End Role="TblMember" EntitySet="TblMember" />
             <End Role="TblAbout" EntitySet="TblAbout" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblEducationInformations_TblEducationInformations" Association="Self.FK_TblEducationInformations_TblEducationInformations">
+            <End Role="TblEducationInformations" EntitySet="TblEducationInformations" />
+            <End Role="TblEducationInformations1" EntitySet="TblEducationInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblEducationInformations_TblMember" Association="Self.FK_TblEducationInformations_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblEducationInformations" EntitySet="TblEducationInformations" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblExperiences_TblMember" Association="Self.FK_TblExperiences_TblMember">
             <End Role="TblMember" EntitySet="TblMember" />
             <End Role="TblExperiences" EntitySet="TblExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblHobby_TblHobby" Association="Self.FK_TblHobby_TblHobby">
+            <End Role="TblHobby" EntitySet="TblHobby" />
+            <End Role="TblHobby1" EntitySet="TblHobby" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblHobby_TblMember" Association="Self.FK_TblHobby_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblHobby" EntitySet="TblHobby" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLanguage_TblLanguage" Association="Self.FK_TblLanguage_TblLanguage">
+            <End Role="TblLanguage" EntitySet="TblLanguage" />
+            <End Role="TblLanguage1" EntitySet="TblLanguage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLanguage_TblMember" Association="Self.FK_TblLanguage_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblLanguage" EntitySet="TblLanguage" />
           </AssociationSet>
           <AssociationSet Name="FK_TblLatestWorks_TblLatestWorks" Association="Self.FK_TblLatestWorks_TblLatestWorks">
             <End Role="TblLatestWorks" EntitySet="TblLatestWorks" />
@@ -254,6 +420,14 @@
           <AssociationSet Name="FK_TblLatestWorks_TblMember" Association="Self.FK_TblLatestWorks_TblMember">
             <End Role="TblMember" EntitySet="TblMember" />
             <End Role="TblLatestWorks" EntitySet="TblLatestWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOtherExperiences_TblMember" Association="Self.FK_TblOtherExperiences_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblOtherExperiences" EntitySet="TblOtherExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOtherExperiences_TblOtherExperiences" Association="Self.FK_TblOtherExperiences_TblOtherExperiences">
+            <End Role="TblOtherExperiences" EntitySet="TblOtherExperiences" />
+            <End Role="TblOtherExperiences1" EntitySet="TblOtherExperiences" />
           </AssociationSet>
           <AssociationSet Name="FK_TblReferences_TblMember" Association="Self.FK_TblReferences_TblMember">
             <End Role="TblMember" EntitySet="TblMember" />
@@ -280,8 +454,8 @@
           <Property Name="AboutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="ImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MemberID" Type="Int32" />
           <NavigationProperty Name="TblAbout1" Relationship="Self.FK_TblAbout_TblAbout" FromRole="TblAbout" ToRole="TblAbout1" />
           <NavigationProperty Name="TblAbout2" Relationship="Self.FK_TblAbout_TblAbout" FromRole="TblAbout1" ToRole="TblAbout" />
@@ -306,6 +480,19 @@
           <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="TblEducationInformations">
+          <Key>
+            <PropertyRef Name="EducationInformationID" />
+          </Key>
+          <Property Name="EducationInformationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EducationOrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="TblEducationInformations1" Relationship="Self.FK_TblEducationInformations_TblEducationInformations" FromRole="TblEducationInformations" ToRole="TblEducationInformations1" />
+          <NavigationProperty Name="TblEducationInformations2" Relationship="Self.FK_TblEducationInformations_TblEducationInformations" FromRole="TblEducationInformations1" ToRole="TblEducationInformations" />
+          <NavigationProperty Name="TblMember" Relationship="Self.FK_TblEducationInformations_TblMember" FromRole="TblEducationInformations" ToRole="TblMember" />
+        </EntityType>
         <EntityType Name="TblExperiences">
           <Key>
             <PropertyRef Name="ExperienceID" />
@@ -318,6 +505,30 @@
           <Property Name="MemberID" Type="Int32" />
           <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblMember" Relationship="Self.FK_TblExperiences_TblMember" FromRole="TblExperiences" ToRole="TblMember" />
+        </EntityType>
+        <EntityType Name="TblHobby">
+          <Key>
+            <PropertyRef Name="HobbyID" />
+          </Key>
+          <Property Name="HobbyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HobbyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="TblHobby1" Relationship="Self.FK_TblHobby_TblHobby" FromRole="TblHobby" ToRole="TblHobby1" />
+          <NavigationProperty Name="TblHobby2" Relationship="Self.FK_TblHobby_TblHobby" FromRole="TblHobby1" ToRole="TblHobby" />
+          <NavigationProperty Name="TblMember" Relationship="Self.FK_TblHobby_TblMember" FromRole="TblHobby" ToRole="TblMember" />
+        </EntityType>
+        <EntityType Name="TblLanguage">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+          </Key>
+          <Property Name="LanguageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="TblLanguage1" Relationship="Self.FK_TblLanguage_TblLanguage" FromRole="TblLanguage" ToRole="TblLanguage1" />
+          <NavigationProperty Name="TblLanguage2" Relationship="Self.FK_TblLanguage_TblLanguage" FromRole="TblLanguage1" ToRole="TblLanguage" />
+          <NavigationProperty Name="TblMember" Relationship="Self.FK_TblLanguage_TblMember" FromRole="TblLanguage" ToRole="TblMember" />
         </EntityType>
         <EntityType Name="TblLatestWorks">
           <Key>
@@ -345,8 +556,12 @@
           <Property Name="MemberMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TblAbout" Relationship="Self.FK_TblAbout_TblMember" FromRole="TblMember" ToRole="TblAbout" />
+          <NavigationProperty Name="TblEducationInformations" Relationship="Self.FK_TblEducationInformations_TblMember" FromRole="TblMember" ToRole="TblEducationInformations" />
           <NavigationProperty Name="TblExperiences" Relationship="Self.FK_TblExperiences_TblMember" FromRole="TblMember" ToRole="TblExperiences" />
+          <NavigationProperty Name="TblHobby" Relationship="Self.FK_TblHobby_TblMember" FromRole="TblMember" ToRole="TblHobby" />
+          <NavigationProperty Name="TblLanguage" Relationship="Self.FK_TblLanguage_TblMember" FromRole="TblMember" ToRole="TblLanguage" />
           <NavigationProperty Name="TblLatestWorks" Relationship="Self.FK_TblLatestWorks_TblMember" FromRole="TblMember" ToRole="TblLatestWorks" />
+          <NavigationProperty Name="TblOtherExperiences" Relationship="Self.FK_TblOtherExperiences_TblMember" FromRole="TblMember" ToRole="TblOtherExperiences" />
           <NavigationProperty Name="TblReferences" Relationship="Self.FK_TblReferences_TblMember" FromRole="TblMember" ToRole="TblReferences" />
           <NavigationProperty Name="TblServices" Relationship="Self.FK_TblServices_TblMember" FromRole="TblMember" ToRole="TblServices" />
           <NavigationProperty Name="TblServicesFeature" Relationship="Self.FK_TblServicesFeature_TblMember" FromRole="TblMember" ToRole="TblServicesFeature" />
@@ -363,6 +578,23 @@
           <Property Name="MessageDate" Type="DateTime" Precision="0" />
           <Property Name="MessageSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MessageContent" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblOtherExperiences">
+          <Key>
+            <PropertyRef Name="ExperienceID" />
+          </Key>
+          <Property Name="ExperienceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExperienceTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="OrgnizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="Int32" />
+          <NavigationProperty Name="TblMember" Relationship="Self.FK_TblOtherExperiences_TblMember" FromRole="TblOtherExperiences" ToRole="TblMember" />
+          <NavigationProperty Name="TblOtherExperiences1" Relationship="Self.FK_TblOtherExperiences_TblOtherExperiences" FromRole="TblOtherExperiences" ToRole="TblOtherExperiences1" />
+          <NavigationProperty Name="TblOtherExperiences2" Relationship="Self.FK_TblOtherExperiences_TblOtherExperiences" FromRole="TblOtherExperiences1" ToRole="TblOtherExperiences" />
         </EntityType>
         <EntityType Name="TblReferences">
           <Key>
@@ -435,6 +667,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblEducationInformations_TblEducationInformations">
+          <End Role="TblEducationInformations" Type="Self.TblEducationInformations" Multiplicity="1" />
+          <End Role="TblEducationInformations1" Type="Self.TblEducationInformations" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblEducationInformations">
+              <PropertyRef Name="EducationInformationID" />
+            </Principal>
+            <Dependent Role="TblEducationInformations1">
+              <PropertyRef Name="EducationInformationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblEducationInformations_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+          <End Role="TblEducationInformations" Type="Self.TblEducationInformations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TblEducationInformations">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblExperiences_TblMember">
           <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
           <End Role="TblExperiences" Type="Self.TblExperiences" Multiplicity="*" />
@@ -443,6 +699,54 @@
               <PropertyRef Name="MemberID" />
             </Principal>
             <Dependent Role="TblExperiences">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblHobby_TblHobby">
+          <End Role="TblHobby" Type="Self.TblHobby" Multiplicity="1" />
+          <End Role="TblHobby1" Type="Self.TblHobby" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblHobby">
+              <PropertyRef Name="HobbyID" />
+            </Principal>
+            <Dependent Role="TblHobby1">
+              <PropertyRef Name="HobbyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblHobby_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+          <End Role="TblHobby" Type="Self.TblHobby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TblHobby">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLanguage_TblLanguage">
+          <End Role="TblLanguage" Type="Self.TblLanguage" Multiplicity="1" />
+          <End Role="TblLanguage1" Type="Self.TblLanguage" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblLanguage">
+              <PropertyRef Name="LanguageID" />
+            </Principal>
+            <Dependent Role="TblLanguage1">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLanguage_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+          <End Role="TblLanguage" Type="Self.TblLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TblLanguage">
               <PropertyRef Name="MemberID" />
             </Dependent>
           </ReferentialConstraint>
@@ -467,6 +771,18 @@
               <PropertyRef Name="MemberID" />
             </Principal>
             <Dependent Role="TblLatestWorks">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOtherExperiences_TblMember">
+          <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+          <End Role="TblOtherExperiences" Type="Self.TblOtherExperiences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TblOtherExperiences">
               <PropertyRef Name="MemberID" />
             </Dependent>
           </ReferentialConstraint>
@@ -507,14 +823,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblOtherExperiences_TblOtherExperiences">
+          <End Role="TblOtherExperiences" Type="Self.TblOtherExperiences" Multiplicity="1" />
+          <End Role="TblOtherExperiences1" Type="Self.TblOtherExperiences" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblOtherExperiences">
+              <PropertyRef Name="ExperienceID" />
+            </Principal>
+            <Dependent Role="TblOtherExperiences1">
+              <PropertyRef Name="ExperienceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="UpSchoolDbPortfolioEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TblAbout" EntityType="Self.TblAbout" />
           <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" />
           <EntitySet Name="TblContact" EntityType="Self.TblContact" />
+          <EntitySet Name="TblEducationInformations" EntityType="Self.TblEducationInformations" />
           <EntitySet Name="TblExperiences" EntityType="Self.TblExperiences" />
+          <EntitySet Name="TblHobby" EntityType="Self.TblHobby" />
+          <EntitySet Name="TblLanguage" EntityType="Self.TblLanguage" />
           <EntitySet Name="TblLatestWorks" EntityType="Self.TblLatestWorks" />
           <EntitySet Name="TblMember" EntityType="Self.TblMember" />
           <EntitySet Name="TblMessage" EntityType="Self.TblMessage" />
+          <EntitySet Name="TblOtherExperiences" EntityType="Self.TblOtherExperiences" />
           <EntitySet Name="TblReferences" EntityType="Self.TblReferences" />
           <EntitySet Name="TblServices" EntityType="Self.TblServices" />
           <EntitySet Name="TblServicesFeature" EntityType="Self.TblServicesFeature" />
@@ -527,9 +859,33 @@
             <End Role="TblMember" EntitySet="TblMember" />
             <End Role="TblAbout" EntitySet="TblAbout" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblEducationInformations_TblEducationInformations" Association="Self.FK_TblEducationInformations_TblEducationInformations">
+            <End Role="TblEducationInformations" EntitySet="TblEducationInformations" />
+            <End Role="TblEducationInformations1" EntitySet="TblEducationInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblEducationInformations_TblMember" Association="Self.FK_TblEducationInformations_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblEducationInformations" EntitySet="TblEducationInformations" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblExperiences_TblMember" Association="Self.FK_TblExperiences_TblMember">
             <End Role="TblMember" EntitySet="TblMember" />
             <End Role="TblExperiences" EntitySet="TblExperiences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblHobby_TblHobby" Association="Self.FK_TblHobby_TblHobby">
+            <End Role="TblHobby" EntitySet="TblHobby" />
+            <End Role="TblHobby1" EntitySet="TblHobby" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblHobby_TblMember" Association="Self.FK_TblHobby_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblHobby" EntitySet="TblHobby" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLanguage_TblLanguage" Association="Self.FK_TblLanguage_TblLanguage">
+            <End Role="TblLanguage" EntitySet="TblLanguage" />
+            <End Role="TblLanguage1" EntitySet="TblLanguage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLanguage_TblMember" Association="Self.FK_TblLanguage_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblLanguage" EntitySet="TblLanguage" />
           </AssociationSet>
           <AssociationSet Name="FK_TblLatestWorks_TblLatestWorks" Association="Self.FK_TblLatestWorks_TblLatestWorks">
             <End Role="TblLatestWorks" EntitySet="TblLatestWorks" />
@@ -538,6 +894,10 @@
           <AssociationSet Name="FK_TblLatestWorks_TblMember" Association="Self.FK_TblLatestWorks_TblMember">
             <End Role="TblMember" EntitySet="TblMember" />
             <End Role="TblLatestWorks" EntitySet="TblLatestWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOtherExperiences_TblMember" Association="Self.FK_TblOtherExperiences_TblMember">
+            <End Role="TblMember" EntitySet="TblMember" />
+            <End Role="TblOtherExperiences" EntitySet="TblOtherExperiences" />
           </AssociationSet>
           <AssociationSet Name="FK_TblReferences_TblMember" Association="Self.FK_TblReferences_TblMember">
             <End Role="TblMember" EntitySet="TblMember" />
@@ -550,6 +910,10 @@
           <AssociationSet Name="FK_TblServicesFeature_TblMember" Association="Self.FK_TblServicesFeature_TblMember">
             <End Role="TblMember" EntitySet="TblMember" />
             <End Role="TblServicesFeature" EntitySet="TblServicesFeature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOtherExperiences_TblOtherExperiences" Association="Self.FK_TblOtherExperiences_TblOtherExperiences">
+            <End Role="TblOtherExperiences" EntitySet="TblOtherExperiences" />
+            <End Role="TblOtherExperiences1" EntitySet="TblOtherExperiences" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -591,6 +955,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TblEducationInformations">
+            <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblEducationInformations">
+              <MappingFragment StoreEntitySet="TblEducationInformations">
+                <ScalarProperty Name="EducationInformationID" ColumnName="EducationInformationID" />
+                <ScalarProperty Name="EducationOrganizationName" ColumnName="EducationOrganizationName" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TblExperiences">
             <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblExperiences">
               <MappingFragment StoreEntitySet="TblExperiences">
@@ -601,6 +976,26 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
                 <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblHobby">
+            <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblHobby">
+              <MappingFragment StoreEntitySet="TblHobby">
+                <ScalarProperty Name="HobbyID" ColumnName="HobbyID" />
+                <ScalarProperty Name="HobbyName" ColumnName="HobbyName" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblLanguage">
+            <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblLanguage">
+              <MappingFragment StoreEntitySet="TblLanguage">
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+                <ScalarProperty Name="LanguageLevel" ColumnName="LanguageLevel" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -640,6 +1035,21 @@
                 <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
                 <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
                 <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOtherExperiences">
+            <EntityTypeMapping TypeName="UpSchoolDbPortfolioModel.TblOtherExperiences">
+              <MappingFragment StoreEntitySet="TblOtherExperiences">
+                <ScalarProperty Name="ExperienceID" ColumnName="ExperienceID" />
+                <ScalarProperty Name="ExperienceTitle" ColumnName="ExperienceTitle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="OrgnizationName" ColumnName="OrgnizationName" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
