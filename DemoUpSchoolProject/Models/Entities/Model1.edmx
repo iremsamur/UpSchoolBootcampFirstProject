@@ -41,9 +41,10 @@
           </Key>
           <Property Name="EducationInformationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EducationOrganizationName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Duration" Type="nvarchar" MaxLength="100" />
+          <Property Name="Duration" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="MemberID" Type="int" />
+          <Property Name="EducationOrganizationLogo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="TblExperiences">
           <Key>
@@ -56,6 +57,8 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="MemberID" Type="int" />
           <Property Name="CompanyLogo" Type="nvarchar(max)" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
         </EntityType>
         <EntityType Name="TblHobby">
           <Key>
@@ -486,9 +489,10 @@
           </Key>
           <Property Name="EducationInformationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EducationOrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Duration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MemberID" Type="Int32" />
+          <Property Name="EducationOrganizationLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblEducationInformations1" Relationship="Self.FK_TblEducationInformations_TblEducationInformations" FromRole="TblEducationInformations" ToRole="TblEducationInformations1" />
           <NavigationProperty Name="TblEducationInformations2" Relationship="Self.FK_TblEducationInformations_TblEducationInformations" FromRole="TblEducationInformations1" ToRole="TblEducationInformations" />
           <NavigationProperty Name="TblMember" Relationship="Self.FK_TblEducationInformations_TblMember" FromRole="TblEducationInformations" ToRole="TblMember" />
@@ -504,6 +508,8 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MemberID" Type="Int32" />
           <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="TblMember" Relationship="Self.FK_TblExperiences_TblMember" FromRole="TblExperiences" ToRole="TblMember" />
         </EntityType>
         <EntityType Name="TblHobby">
@@ -963,6 +969,7 @@
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="EducationOrganizationLogo" ColumnName="EducationOrganizationLogo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -976,6 +983,8 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
                 <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

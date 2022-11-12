@@ -150,15 +150,15 @@ Author URL: http://w3layouts.com
                     <span class="text">Benim Portfolio'm' </span>
                     <h3 class="title-big"><span>Son Projelerim</span></h3>
                 </div>
-                <div id="owl-portfolio">
-                    <div class="item">
+                <div id="owl-portfolio" style="margin-left: auto; margin-right: auto;text-align:center">
+                    <div class="item" >
                         <div class="portfolio-content">
                             @foreach (var item in Model)
                             {
                             
 
                                 <a href="@item.GithubLink" class="grid-anchor" alt="Github Linki"target="_blank">
-                                    <img src="@item.ProjectImage" class="img-fluid" alt="" />
+                                    <img src="@item.ProjectImage" class="img-fluid" alt="" style="width:1000px;height:500px;"/>
 
                                     <div class="template-info">
                                         <h3>@item.ProjectTitle</h3>

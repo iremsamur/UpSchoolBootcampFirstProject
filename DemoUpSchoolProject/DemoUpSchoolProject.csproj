@@ -137,6 +137,7 @@
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\MySkillsController.cs" />
+    <Compile Include="Controllers\OtherExperiencesController.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
@@ -898,6 +899,13 @@
     <Content Include="Views\MySkills\Index.cshtml" />
     <Content Include="Views\MySkills\AddSkill.cshtml" />
     <Content Include="Views\MySkills\UpdateSkill.cshtml" />
+    <Content Include="Views\Portfolio\MyOtherExperiences.cshtml" />
+    <Content Include="Views\Portfolio\MyEducationInformations.cshtml" />
+    <Content Include="Views\Portfolio\LanguagesInformations.cshtml" />
+    <Content Include="Views\Portfolio\HobbiesInformations.cshtml" />
+    <Content Include="Views\OtherExperiences\Index.cshtml" />
+    <Content Include="Views\OtherExperiences\AddOtherExperience.cshtml" />
+    <Content Include="Views\OtherExperiences\UpdateOtherExperience.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

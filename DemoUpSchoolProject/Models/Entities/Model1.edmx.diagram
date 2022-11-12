@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1269ab4746ec4171a277cf78d5dd55b8" Name="Diagram1">
+      <Diagram DiagramId="096d560aa3fc4e8a82d4ff1e60b71719" Name="Diagram1">
         <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblAbout" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblAdmin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblContact" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblEducationInformations" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblExperiences" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblHobby" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblLanguage" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblLatestWorks" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblMember" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblExperiences" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblHobby" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblLanguage" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblLatestWorks" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblMember" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblMessage" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblOtherExperiences" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblReferences" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblServices" Width="1.5" PointX="3" PointY="30.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblServicesFeature" Width="1.5" PointX="3" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblOtherExperiences" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblReferences" Width="1.5" PointX="3" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblServices" Width="1.5" PointX="3" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblServicesFeature" Width="1.5" PointX="3" PointY="34" IsExpanded="true" />
         <EntityTypeShape EntityType="UpSchoolDbPortfolioModel.TblTestimonial" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="UpSchoolDbPortfolioModel.FK_TblAbout_TblAbout" ManuallyRouted="false" />
         <AssociationConnector Association="UpSchoolDbPortfolioModel.FK_TblAbout_TblMember" ManuallyRouted="false" />

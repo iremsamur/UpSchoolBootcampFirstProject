@@ -85,6 +85,28 @@ namespace DemoUpSchoolProject.Controllers
             var informations = db.TblExperiences.Where(x => x.MemberID == id).ToList();
             return PartialView(informations);
         }
+        public PartialViewResult MyEducationInformations()
+        {
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            //var id = values.MemberID;
+            var id = 1;
+
+
+            var informations = db.TblEducationInformations.Where(x => x.MemberID == id).ToList();
+            return PartialView(informations);
+        }
+        public PartialViewResult MyOtherExperiences()
+        {
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            //var id = values.MemberID;
+            var id = 1;
+
+
+            var informations = db.TblOtherExperiences.Where(x => x.MemberID == id).ToList();
+            return PartialView(informations);
+        }
         public PartialViewResult MyReferences()
         {
             //var mail = Session["MemberMail"].ToString();
@@ -96,7 +118,29 @@ namespace DemoUpSchoolProject.Controllers
             var informations = db.TblReferences.Where(x => x.MemberID == id).ToList();
             return PartialView(informations);
         }
-        
+        public PartialViewResult LanguagesInformations()
+        {
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            //var id = values.MemberID;
+            var id = 1;
+
+
+            var informations = db.TblLanguage.Where(x => x.MemberID == id).ToList();
+            return PartialView(informations);
+        }
+        public PartialViewResult HobbiesInformations()
+        {
+            //var mail = Session["MemberMail"].ToString();
+            //var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
+            //var id = values.MemberID;
+            var id = 1;
+
+
+            var informations = db.TblHobby.Where(x => x.MemberID == id).ToList();
+            return PartialView(informations);
+        }
+
         [HttpGet]
         public PartialViewResult ContactPage()
         {

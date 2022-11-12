@@ -1,30 +1,31 @@
 ﻿@using DemoUpSchoolProject.Models.Entities
-@model List<TblExperiences>
+@model List<TblOtherExperiences>
 <section class="w3l-homeblock3" id="awards">
     <div class="midd-w3 py-5">
         <div class="container py-lg-5 py-md-3">
             <div class="row">
                 <div class="col-lg-6">
-                    
+
                     <h3 class="title-big">
                         Deneyimler
                     </h3>
                     <p class="mt-4">
-                        Aşağıda yazılım alanında sahip olduğum iş ve staj deneyimlerim yer almaktadır.
+                        Aşağıda yazılım alanıyla ilgili ve sosyal alanda yer aldığım öğrenci topluluğu, bootcamp deneyim
+                        bilgilerim yer almaktadır.
                     </p>
                     <div class="reward-list mt-5">
                         @foreach (var item in Model)
                         {
                             <div class="reward-item">
-                                <div class="reward-item-photo" style="font-size:medium;"><img src="@item.CompanyLogo" alt="@item.CompanyName" class="img-fluid">@item.CompanyName</div>
+                                <div class="reward-item-photo" style="font-size:medium;"><img src="@item.ImageUrl" alt="@item.OrgnizationName" class="img-fluid">@item.OrgnizationName</div>
 
 
                                 <div class="reward-item-detail">
-                                    <span class="reward-item-title">@item.JobTitle</span>
+                                    <span class="reward-item-title">@item.ExperienceTitle</span>
                                     <p class="reward-item-descr">@item.Description</p>
                                     <p class="reward-item-descr">@item.StartDate - @item.EndDate</p>
-
                                     <p class="reward-item-descr">@item.Duration</p>
+
                                 </div>
                             </div>
 
@@ -36,10 +37,11 @@
                 <div class="col-lg-6 align-self mt-lg-0 mt-md-5 mt-4">
                     <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
                         <img src="~/Templates/images/business.jpeg" alt="" class="radius-image img-fluid">
-                  
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+

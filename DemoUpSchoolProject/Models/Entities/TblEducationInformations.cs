@@ -19,6 +19,7 @@ namespace DemoUpSchoolProject.Models.Entities
         public string Duration { get; set; }
         public string Description { get; set; }
         public Nullable<int> MemberID { get; set; }
+        public string EducationOrganizationLogo { get; set; }
     
         public virtual TblEducationInformations TblEducationInformations1 { get; set; }
         public virtual TblEducationInformations TblEducationInformations2 { get; set; }

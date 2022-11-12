@@ -126,9 +126,9 @@ Author URL: http://w3layouts.com
                         </div>
                         <div class="widget-social-icons mt-sm-5 mt-4">
                             <ul class="follow-social">
-                                
+
                                 <li><a href="https://www.linkedin.com/in/iremsamur/"><span class="fa fa-linkedin"></span></a></li>
-                               
+
                                 <li><a href="https://github.com/iremsamur"><span class="fa fa-github"></span></a></li>
                             </ul>
                         </div>
@@ -154,19 +154,24 @@ Author URL: http://w3layouts.com
     </section>
     <!-- //banner section -->
     <!-- home page about section -->
+    @{Html.RenderAction("MyEducationInformations", "Portfolio");}
+
     @{Html.RenderAction("MyServices", "Portfolio");}
+
     <!-- //home page about section -->
     <!-- home page about section -->
     @{Html.RenderAction("MyFeatureSkills", "Portfolio");}
     <!-- //home page about section -->
     <!-- home page about section -->
     @{Html.RenderAction("MyExperiences", "Portfolio");}
+    @{Html.RenderAction("MyOtherExperiences", "Portfolio");}
+    @{Html.RenderAction("LanguagesInformations", "Portfolio");}
+    @{Html.RenderAction("HobbiesInformations", "Portfolio");}
     <!-- //home page about section -->
     <!-- home page about section -->
     @{Html.RenderAction("MyReferences", "Portfolio");}
     <!-- //home page about section -->
     <!-- home page about section -->
-    
     <!-- //home page about section -->
     <!-- home page contact section -->
     @{Html.RenderAction("ContactPage", "Portfolio");}

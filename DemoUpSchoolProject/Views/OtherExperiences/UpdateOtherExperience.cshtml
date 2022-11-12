@@ -1,0 +1,31 @@
+﻿@model DemoUpSchoolProject.Models.Entities.TblOtherExperiences
+@{
+    ViewBag.Title = "UpdateOtherExperience";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Deneyim Güncelle</h2>
+<br />
+@using (Html.BeginForm("UpdateOtherExperience", "OtherExperiences", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label>Organizasyon Adı</label>
+    @Html.TextBoxFor(x => x.OrgnizationName, new { @class = "form form-control" })
+    <label>Pozisyon Adı</label>
+    @Html.TextBoxFor(x => x.ExperienceTitle, new { @class = "form form-control" })
+    <label>Açıklama</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form form-control" })
+    <label>Süre</label>
+    @Html.TextBoxFor(x => x.Duration, new { @class = "form form-control" })
+    <label>Başlangıç Tarihi</label>
+    <input name="StartDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+    <label>Bitiş Tarihi</label>
+    <input name="EndDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+    <label>Kurum Logosu</label>
+    <input type="file" name="ImageUrl" />
+    <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+
+
+}
+
+

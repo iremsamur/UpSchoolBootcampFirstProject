@@ -42,6 +42,7 @@
           <ScalarProperty Name="Duration" ColumnName="Duration" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="EducationOrganizationLogo" ColumnName="EducationOrganizationLogo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -55,6 +56,8 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="MemberID" ColumnName="MemberID" />
           <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,5 +1,5 @@
 ﻿@using DemoUpSchoolProject.Models.Entities
-@model List<TblServicesFeature>
+@model List<TblLanguage>
 <section class="w3l-homeblock2" id="skills">
     <div class="midd-w3 py-5">
         <div class="container py-lg-5 py-md-3">
@@ -7,25 +7,26 @@
                 <div class="col-lg-6 align-self">
                     <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
                         <img src="~/Templates/images/softwareeducations.jpeg" alt="" class="radius-image img-fluid">
-                 
+
                     </div>
                 </div>
                 <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4">
                     <span class="text"></span>
-                   <h1>Eğitim- Kurs - Sertifika Bilgileri</h1>
+                    <h1>Yabancı Dil Bilgisi</h1>
                     <p class="mt-4">
-                        Aşağıda, öğrencilik sürecim boyunca katıldığım eğitimlerin bilgisi yer almaktadır
+                        Aşağıda, hakim olduğu yabancı dil bilgileri yer almaktadır.
                     </p>
                     <div class="skills-bars mt-5">
                         @foreach (var item in Model)
                         {
-                            <div class="progress-info">
-                                <h6 class="progress-tittle">@item.Title - @item.Description</h6>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
+                        <div class="progress-info">
+                            <h6 class="progress-tittle">@item.LanguageName</h6>
+                            <p class="progress-tittle">@item.LanguageLevel</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                                 </div>
                             </div>
+                        </div>
 
                         }
 
@@ -37,3 +38,4 @@
         </div>
     </div>
 </section>
+

@@ -21,6 +21,8 @@ namespace DemoUpSchoolProject.Models.Entities
         public string Description { get; set; }
         public Nullable<int> MemberID { get; set; }
         public string CompanyLogo { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
     
         public virtual TblMember TblMember { get; set; }
     }
