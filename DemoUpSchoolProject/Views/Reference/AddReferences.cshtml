@@ -1,0 +1,34 @@
+﻿@model DemoUpSchoolProject.Models.Entities.TblReferences
+@{
+    ViewBag.Title = "AddReferences";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Yeni Referans Ekle</h2>
+<br />
+@using (Html.BeginForm("AddReferences", "References", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label>Adı</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form form-control" })
+    <label>Soyadı</label>
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form form-control" })
+    <label>Ünvanı</label>
+    @Html.TextBoxFor(x => x.JobTitle, new { @class = "form form-control" })
+    <label>Çalıştığı Şirket Adı</label>
+    @Html.TextBoxFor(x => x.CompanyName, new { @class = "form form-control" })
+    <label>Mail Adresi</label>
+    @Html.TextBoxFor(x => x.EMail, new { @class = "form form-control" })
+    <label>Telefon Numarası</label>
+    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form form-control" })
+
+
+    <label>Yorum</label>
+    @Html.TextBoxFor(x => x.Comment, new { @class = "form form-control" })
+    <label>Resmi</label>
+    <input type="file" name="Image" />
+    <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+
+
+}
+

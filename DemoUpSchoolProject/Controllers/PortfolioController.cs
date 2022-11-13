@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,6 +16,7 @@ namespace DemoUpSchoolProject.Controllers
         {
             return View();
         }
+             
         public ActionResult Portfolio()
         {
             //var mail = Session["MemberMail"].ToString();
@@ -51,6 +53,18 @@ namespace DemoUpSchoolProject.Controllers
 
             var informations = db.TblAbout.Where(x => x.MemberID == id).ToList();
             return PartialView(informations);
+        }
+        public PartialViewResult DownloadMyResume()
+        {
+
+            return PartialView();
+        }
+
+        public ActionResult DownloadResumeFile()
+        {
+            string filePath = "~/Templates/Resume/CV_İREMSAMUR.pdf";
+            Response.Headers.Add("Content-Disposition", "inline; filename=CV_İREMSAMUR.pdf");
+            return File(filePath, "application/pdf");
         }
         public PartialViewResult MyServices()
         {

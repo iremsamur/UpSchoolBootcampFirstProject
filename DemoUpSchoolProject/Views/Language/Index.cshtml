@@ -1,12 +1,12 @@
 ﻿@using DemoUpSchoolProject.Models.Entities
-@model List<TblServices>
+@model List<TblLanguage>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
-    int sayac = 0;
+    int count = 0;
 }
 
-<h2>Yeteneklerim</h2>
+<h2>Dil Bilgisi</h2>
 @if (Model.Count == 0)
 {
     <div class="alert alert-warning" role="alert">
@@ -23,8 +23,9 @@ else
         <tr>
 
             <th>#</th>
-            <th>Teknoloji Görseli</th>
-            <th>Yetenek (Teknoloji) Adı</th>
+            <th>Yabancı Dil Adı</th>
+            <th>Dil Seviyesi</th>
+
 
 
 
@@ -35,19 +36,19 @@ else
         <!--razor syntax-->
         @foreach (var item in Model)
         {
-            sayac += 1;
+            count += 1;
             <tr>
 
-                <td>@sayac</td>
-                <td>
-                    <img src="@item.ImageUrl" class="img-fluid img-thumbnail" alt="@item.Title">
-                </td>
-                <td>@item.Title</td>
+                <td>@count</td>
+
+                <td>@item.LanguageName</td>
+                <td>@item.LanguageLevel</td>
 
 
 
-                <td><a href="/MySkills/DeleteSkill/@item.ServicesID" class="btn btn-danger">Sil</a></td>
-                <td><a href="/MySkills/UpdateSkill/@item.ServicesID" class="btn btn-success">Güncelle</a></td>
+
+                <td><a href="/Language/DeleteLanguage/@item.LanguageID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Language/UpdateLanguage/@item.LanguageID" class="btn btn-success">Güncelle</a></td>
 
 
             </tr>
@@ -59,5 +60,5 @@ else
 
 
 }
-<a href="/MySkills/AddSkill" class="btn btn-primary">Yeni Yetenek Ekle</a>
+<a href="/Language/AddLanguage" class="btn btn-primary">Yeni Dil Bilgisi Ekle</a>
 

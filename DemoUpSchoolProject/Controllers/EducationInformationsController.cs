@@ -8,9 +8,8 @@ using System.Web.Mvc;
 
 namespace DemoUpSchoolProject.Controllers
 {
-    public class MySkillsController : Controller
+    public class EducationInformationsController : Controller
     {
-
         UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
         public ActionResult Index()
         {
@@ -25,18 +24,18 @@ namespace DemoUpSchoolProject.Controllers
             ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
 
 
-            var informations = db.TblServices.Where(x => x.MemberID == id).ToList();
+            var informations = db.TblEducationInformations.Where(x => x.MemberID == id).ToList();
 
             return View(informations);
 
 
 
         }
-        public ActionResult DeleteSkill(int ID)//entity framework içinde gönderilen parametrenin ismi ID olmak zorundadır.
+        public ActionResult DeleteEducationInformation(int ID)//entity framework içinde gönderilen parametrenin ismi ID olmak zorundadır.
                                                     //ID gönderilecekse ID olmalıdır. x olamaz.
         {
-            var values = db.TblServices.Find(ID);//o id ile silinecek elemanı bulur
-            db.TblServices.Remove(values);//bulduğu değeri siler.
+            var values = db.TblEducationInformations.Find(ID);//o id ile silinecek elemanı bulur
+            db.TblEducationInformations.Remove(values);//bulduğu değeri siler.
             db.SaveChanges();
             return RedirectToAction("Index");
 
@@ -45,15 +44,15 @@ namespace DemoUpSchoolProject.Controllers
         //önce güncelleyeceğimiz verinin verilerini sayfaya buradan taşırız.
 
         [HttpGet]
-        public ActionResult UpdateSkill(int ID)
+        public ActionResult UpdateEducationInformation(int ID)
         {
-            var values = db.TblServices.Find(ID);
+            var values = db.TblEducationInformations.Find(ID);
             return View(values);
 
         }
         //şimdi güncelleme işlemini yapacak httppost metodunu yazarız.
         [HttpPost]
-        public ActionResult UpdateSkill(TblServices p)
+        public ActionResult UpdateEducationInformation(TblEducationInformations p)
         {
 
             //upload image
@@ -63,7 +62,7 @@ namespace DemoUpSchoolProject.Controllers
                 string fileExtension = Path.GetExtension(Request.Files[0].FileName);
                 string path = "~/Templates/images" + fileName + fileExtension;
                 Request.Files[0].SaveAs(Server.MapPath(path));//dosyayı farklı kaydet
-                p.ImageUrl = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
+                p.EducationOrganizationLogo = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
                 //~ olmadan yazılır. ~ olursa resim gelmez
 
 
@@ -71,36 +70,43 @@ namespace DemoUpSchoolProject.Controllers
             }
             else
             {
-                var values2 = db.TblServices.Find(p.ServicesID);
-                p.ImageUrl = values2.ImageUrl;
+                var values2 = db.TblEducationInformations.Find(p.EducationInformationID);
+                p.EducationOrganizationLogo= values2.EducationOrganizationLogo;
             }
             var mail = Session["MemberMail"].ToString();
             var informations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
             var id = informations.MemberID;
             p.MemberID = id;
 
-            var values = db.TblServices.Find(p.ServicesID);
+            var values = db.TblEducationInformations.Find(p.EducationInformationID);
             //güncelleme
-            values.Title = p.Title;
+            values.EducationOrganizationName = p.EducationOrganizationName;
             values.MemberID = p.MemberID;
-           
+            values.Description = p.Description;
+            values.Duration = p.Duration;
+        
             db.SaveChanges();
 
             return RedirectToAction("Index");
 
 
         }
-       
+        public ActionResult ShowDetailEducationInformation(int ID)
+        {
+            var values = db.TblEducationInformations.Where(x => x.EducationInformationID == ID).ToList();
+            return View(values);
+
+        }
 
         [HttpGet]
-        public ActionResult AddSkill()
+        public ActionResult AddEducationInformation()
         {
             //Bu metod sadece sayfa yüklendiği zaman çalışarak boş değer eklemenin önüne geçilecek
             return View();
 
         }
         [HttpPost]//post işleminde ise bu metodun çalışması sağlanır.
-        public ActionResult AddSkill(TblServices p)
+        public ActionResult AddEducationInformation(TblEducationInformations p)
         {
             //upload image
             if (Request.Files.Count > 0)
@@ -109,7 +115,7 @@ namespace DemoUpSchoolProject.Controllers
                 string fileExtension = Path.GetExtension(Request.Files[0].FileName);
                 string path = "~/Templates/images" + fileName + fileExtension;
                 Request.Files[0].SaveAs(Server.MapPath(path));//dosyayı farklı kaydet
-                p.ImageUrl = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
+                p.EducationOrganizationLogo = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
                 //~ olmadan yazılır. ~ olursa resim gelmez
 
 
@@ -119,7 +125,7 @@ namespace DemoUpSchoolProject.Controllers
             var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
             var id = values.MemberID;
             p.MemberID = id;
-            db.TblServices.Add(p);
+            db.TblEducationInformations.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");
 

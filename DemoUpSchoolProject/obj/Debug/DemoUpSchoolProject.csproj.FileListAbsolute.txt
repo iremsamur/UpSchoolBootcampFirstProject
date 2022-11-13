@@ -72,7 +72,6 @@ C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\b
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\bin\Newtonsoft.Json.xml
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\bin\Antlr3.Runtime.pdb
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\obj\Debug\DemoUpSchoolProject.csproj.AssemblyReference.cache
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\obj\Debug\DemoUpSchoolProject.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\obj\Debug\DemoUpSchoolProject.csproj.CopyComplete
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\obj\Debug\DemoUpSchoolProject.dll

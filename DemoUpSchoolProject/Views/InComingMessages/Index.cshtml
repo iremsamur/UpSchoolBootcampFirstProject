@@ -1,12 +1,12 @@
 ﻿@using DemoUpSchoolProject.Models.Entities
-@model List<TblServices>
+@model List<TblContact>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
     int sayac = 0;
 }
 
-<h2>Yeteneklerim</h2>
+<h2>Deneyimlerim</h2>
 @if (Model.Count == 0)
 {
     <div class="alert alert-warning" role="alert">
@@ -23,14 +23,15 @@ else
         <tr>
 
             <th>#</th>
-            <th>Teknoloji Görseli</th>
-            <th>Yetenek (Teknoloji) Adı</th>
-
+            <th>Mesaj Gönderen Kişinin Adı Soyadı</th>
+            <th>Mesaj Gönderen Kişinin Mail Adresi</th>
+            <th>Mesaj Konusu</th>
+            <th>Mesaj</th>
+       
 
 
             <th>Sil</th>
-            <th>Güncelle</th>
-
+         
         </tr>
         <!--razor syntax-->
         @foreach (var item in Model)
@@ -39,16 +40,15 @@ else
             <tr>
 
                 <td>@sayac</td>
-                <td>
-                    <img src="@item.ImageUrl" class="img-fluid img-thumbnail" alt="@item.Title">
-                </td>
-                <td>@item.Title</td>
+             
+                <td>@item.NameSurname</td>
+                <td>@item.EMail</td>
+                <td>@item.Subject</td>
+                <td>@item.Message</td>
 
 
-
-                <td><a href="/MySkills/DeleteSkill/@item.ServicesID" class="btn btn-danger">Sil</a></td>
-                <td><a href="/MySkills/UpdateSkill/@item.ServicesID" class="btn btn-success">Güncelle</a></td>
-
+                <td><a href="/InComingMessage/DeleteContact/@item.ContactID" class="btn btn-danger">Sil</a></td>
+         
 
             </tr>
 
@@ -59,5 +59,4 @@ else
 
 
 }
-<a href="/MySkills/AddSkill" class="btn btn-primary">Yeni Yetenek Ekle</a>
 

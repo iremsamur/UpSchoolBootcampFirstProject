@@ -1,0 +1,33 @@
+﻿@model  DemoUpSchoolProject.Models.Entities.TblLatestWorks
+@{
+    ViewBag.Title = "AddProject";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Projeyi Ekle</h2>
+
+@using (Html.BeginForm("AddProject", "Projects", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <label>Proje Adı</label>
+    @Html.TextBoxFor(x => x.ProjectTitle, new { @class = "form form-control" })
+    <label>Proje Tipi</label>
+
+    @Html.TextBoxFor(x => x.ProjectType, new { @class = "form form-control" })
+    <label>Proje Açıklaması</label>
+
+    @Html.TextBoxFor(x => x.ProjectDescription, new { @class = "form form-control" })
+    <label>Proje Github Linki</label>
+
+    @Html.TextBoxFor(x => x.GithubLink, new { @class = "form form-control" })
+    <label>Proje Tarihi</label>
+    <input name="ProjectDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+
+    <label>Proje Resmi</label>
+    <input type="file" name="ProjectImage" />
+    <br />
+    <input type="submit" value="Ekle" class="btn btn-success" />
+
+
+}
+

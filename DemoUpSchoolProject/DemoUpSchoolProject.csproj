@@ -129,16 +129,22 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\InComingMessagesController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\EducationInformationsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ExperiencesController.cs" />
+    <Compile Include="Controllers\HobbyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\MySkillsController.cs" />
     <Compile Include="Controllers\OtherExperiencesController.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\ReferenceController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
@@ -272,6 +278,8 @@
     <Content Include="Templates\colorlib-regform-24\colorlib-regform-24\readme.txt" />
     <Content Include="Templates\images\1200px-Havelsan_logo.svg.png" />
     <Content Include="Templates\images\business.jpeg" />
+    <Content Include="Templates\images\GettyImages-490922474-5266b60.jpg" />
+    <Content Include="Templates\images\hobby.jpeg" />
     <Content Include="Templates\images\software.jpg" />
     <Content Include="Templates\images\big-btarge.png" />
     <Content Include="Templates\images\softwareeducations.jpeg" />
@@ -906,9 +914,28 @@
     <Content Include="Views\OtherExperiences\Index.cshtml" />
     <Content Include="Views\OtherExperiences\AddOtherExperience.cshtml" />
     <Content Include="Views\OtherExperiences\UpdateOtherExperience.cshtml" />
+    <Content Include="Views\EducationInformations\Index.cshtml" />
+    <Content Include="Views\EducationInformations\AddEducationInformation.cshtml" />
+    <Content Include="Views\EducationInformations\UpdateEducationInformation.cshtml" />
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Language\AddLanguage.cshtml" />
+    <Content Include="Views\Language\UpdateLanguage.cshtml" />
+    <Content Include="Views\Hobby\Index.cshtml" />
+    <Content Include="Views\Hobby\AddHobby.cshtml" />
+    <Content Include="Views\Hobby\UpdateHobby.cshtml" />
+    <Content Include="Views\Portfolio\DownloadMyResume.cshtml" />
+    <Content Include="Templates\Resume\CV_İREMSAMUR.pdf" />
+    <Content Include="Views\Reference\Index.cshtml" />
+    <Content Include="Views\Reference\AddReferences.cshtml" />
+    <Content Include="Views\Reference\UpdateReferences.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Projects\UpdateProject.cshtml" />
+    <Content Include="Views\Projects\AddProject.cshtml" />
+    <Content Include="Views\InComingMessages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ComingMessages\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

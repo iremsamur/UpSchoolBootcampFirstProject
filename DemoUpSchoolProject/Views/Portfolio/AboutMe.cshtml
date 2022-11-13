@@ -9,8 +9,12 @@
             @item.Title adayıyım
         </h1>
         <p class="mx-lg-5">
-            <strong>@item.Description</strong> 
+            <strong>@item.Description</strong>
             <strong>Hakkımda daha detaylı bilgilere aşağıdan ulaşabilirsiniz.</strong>
+            <br />
+            <br />
+            @{Html.RenderAction("DownloadMyResume", "Portfolio");}
+
         </p>
         <div class="row">
             <div class="col-lg-8 mx-lg-auto col-md-10">

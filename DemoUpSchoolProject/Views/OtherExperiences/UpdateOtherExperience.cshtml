@@ -8,6 +8,7 @@
 <br />
 @using (Html.BeginForm("UpdateOtherExperience", "OtherExperiences", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.HiddenFor(x => x.ExperienceID, new { @class = "form-control" })
     <label>Organizasyon Adı</label>
     @Html.TextBoxFor(x => x.OrgnizationName, new { @class = "form form-control" })
     <label>Pozisyon Adı</label>

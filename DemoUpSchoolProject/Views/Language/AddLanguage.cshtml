@@ -1,0 +1,23 @@
+﻿@model DemoUpSchoolProject.Models.Entities.TblLanguage
+@{
+    ViewBag.Title = "AddLanguage";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Yeni Öğrenim Bilgisi Ekle</h2>
+<br />
+@using (Html.BeginForm("AddLanguage", "Language", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label>Dil Adı</label>
+    @Html.TextBoxFor(x => x.LanguageName, new { @class = "form form-control" })
+    <label>Dil Seviyesi</label>
+    @Html.TextBoxFor(x => x.LanguageLevel, new { @class = "form form-control" })
+  
+
+    
+    <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+
+
+}
+

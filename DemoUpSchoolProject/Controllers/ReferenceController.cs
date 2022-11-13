@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace DemoUpSchoolProject.Controllers
 {
-    public class MySkillsController : Controller
+    public class ReferenceController : Controller
     {
 
         UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
@@ -25,18 +25,18 @@ namespace DemoUpSchoolProject.Controllers
             ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
 
 
-            var informations = db.TblServices.Where(x => x.MemberID == id).ToList();
+            var informations = db.TblReferences.Where(x => x.MemberID == id).ToList();
 
             return View(informations);
 
 
 
         }
-        public ActionResult DeleteSkill(int ID)//entity framework içinde gönderilen parametrenin ismi ID olmak zorundadır.
+        public ActionResult DeleteReferences(int ID)//entity framework içinde gönderilen parametrenin ismi ID olmak zorundadır.
                                                     //ID gönderilecekse ID olmalıdır. x olamaz.
         {
-            var values = db.TblServices.Find(ID);//o id ile silinecek elemanı bulur
-            db.TblServices.Remove(values);//bulduğu değeri siler.
+            var values = db.TblReferences.Find(ID);//o id ile silinecek elemanı bulur
+            db.TblReferences.Remove(values);//bulduğu değeri siler.
             db.SaveChanges();
             return RedirectToAction("Index");
 
@@ -45,15 +45,15 @@ namespace DemoUpSchoolProject.Controllers
         //önce güncelleyeceğimiz verinin verilerini sayfaya buradan taşırız.
 
         [HttpGet]
-        public ActionResult UpdateSkill(int ID)
+        public ActionResult UpdateReferences(int ID)
         {
-            var values = db.TblServices.Find(ID);
+            var values = db.TblReferences.Find(ID);
             return View(values);
 
         }
         //şimdi güncelleme işlemini yapacak httppost metodunu yazarız.
         [HttpPost]
-        public ActionResult UpdateSkill(TblServices p)
+        public ActionResult UpdateReferences(TblReferences p)
         {
 
             //upload image
@@ -63,7 +63,7 @@ namespace DemoUpSchoolProject.Controllers
                 string fileExtension = Path.GetExtension(Request.Files[0].FileName);
                 string path = "~/Templates/images" + fileName + fileExtension;
                 Request.Files[0].SaveAs(Server.MapPath(path));//dosyayı farklı kaydet
-                p.ImageUrl = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
+                p.Image = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
                 //~ olmadan yazılır. ~ olursa resim gelmez
 
 
@@ -71,36 +71,43 @@ namespace DemoUpSchoolProject.Controllers
             }
             else
             {
-                var values2 = db.TblServices.Find(p.ServicesID);
-                p.ImageUrl = values2.ImageUrl;
+                var values2 = db.TblReferences.Find(p.ReferenceID);
+                p.Image = values2.Image;
             }
             var mail = Session["MemberMail"].ToString();
             var informations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
             var id = informations.MemberID;
             p.MemberID = id;
 
-            var values = db.TblServices.Find(p.ServicesID);
+            var values = db.TblReferences.Find(p.ReferenceID);
             //güncelleme
-            values.Title = p.Title;
+            values.JobTitle = p.JobTitle;
             values.MemberID = p.MemberID;
-           
+            values.Comment = p.Comment;
+            values.PhoneNumber = p.PhoneNumber;
+            values.EMail = p.EMail;
+            values.Name = p.Name;
+            values.Surname = p.Surname;
+            
+            values.CompanyName = p.CompanyName;
+        
             db.SaveChanges();
 
             return RedirectToAction("Index");
 
 
         }
-       
+        
 
         [HttpGet]
-        public ActionResult AddSkill()
+        public ActionResult AddReferences()
         {
             //Bu metod sadece sayfa yüklendiği zaman çalışarak boş değer eklemenin önüne geçilecek
             return View();
 
         }
         [HttpPost]//post işleminde ise bu metodun çalışması sağlanır.
-        public ActionResult AddSkill(TblServices p)
+        public ActionResult AddReferences(TblReferences p)
         {
             //upload image
             if (Request.Files.Count > 0)
@@ -109,7 +116,7 @@ namespace DemoUpSchoolProject.Controllers
                 string fileExtension = Path.GetExtension(Request.Files[0].FileName);
                 string path = "~/Templates/images" + fileName + fileExtension;
                 Request.Files[0].SaveAs(Server.MapPath(path));//dosyayı farklı kaydet
-                p.ImageUrl = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
+                p.Image = "/Templates/images" + fileName + fileExtension;//veritabanına dosya yol uverilirken
                 //~ olmadan yazılır. ~ olursa resim gelmez
 
 
@@ -119,7 +126,7 @@ namespace DemoUpSchoolProject.Controllers
             var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
             var id = values.MemberID;
             p.MemberID = id;
-            db.TblServices.Add(p);
+            db.TblReferences.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");
 

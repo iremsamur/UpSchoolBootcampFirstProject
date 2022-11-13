@@ -8,9 +8,8 @@ using System.Web.Mvc;
 
 namespace DemoUpSchoolProject.Controllers
 {
-    public class MySkillsController : Controller
+    public class HobbyController : Controller
     {
-
         UpSchoolDbPortfolioEntities db = new UpSchoolDbPortfolioEntities();
         public ActionResult Index()
         {
@@ -25,18 +24,18 @@ namespace DemoUpSchoolProject.Controllers
             ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
 
 
-            var informations = db.TblServices.Where(x => x.MemberID == id).ToList();
+            var informations = db.TblHobby.Where(x => x.MemberID == id).ToList();
 
             return View(informations);
 
 
 
         }
-        public ActionResult DeleteSkill(int ID)//entity framework içinde gönderilen parametrenin ismi ID olmak zorundadır.
+        public ActionResult DeleteHobby(int ID)//entity framework içinde gönderilen parametrenin ismi ID olmak zorundadır.
                                                     //ID gönderilecekse ID olmalıdır. x olamaz.
         {
-            var values = db.TblServices.Find(ID);//o id ile silinecek elemanı bulur
-            db.TblServices.Remove(values);//bulduğu değeri siler.
+            var values = db.TblHobby.Find(ID);//o id ile silinecek elemanı bulur
+            db.TblHobby.Remove(values);//bulduğu değeri siler.
             db.SaveChanges();
             return RedirectToAction("Index");
 
@@ -45,15 +44,15 @@ namespace DemoUpSchoolProject.Controllers
         //önce güncelleyeceğimiz verinin verilerini sayfaya buradan taşırız.
 
         [HttpGet]
-        public ActionResult UpdateSkill(int ID)
+        public ActionResult UpdateHobby(int ID)
         {
-            var values = db.TblServices.Find(ID);
+            var values = db.TblHobby.Find(ID);
             return View(values);
 
         }
         //şimdi güncelleme işlemini yapacak httppost metodunu yazarız.
         [HttpPost]
-        public ActionResult UpdateSkill(TblServices p)
+        public ActionResult UpdateHobby(TblHobby p)
         {
 
             //upload image
@@ -71,7 +70,7 @@ namespace DemoUpSchoolProject.Controllers
             }
             else
             {
-                var values2 = db.TblServices.Find(p.ServicesID);
+                var values2 = db.TblHobby.Find(p.HobbyID);
                 p.ImageUrl = values2.ImageUrl;
             }
             var mail = Session["MemberMail"].ToString();
@@ -79,28 +78,28 @@ namespace DemoUpSchoolProject.Controllers
             var id = informations.MemberID;
             p.MemberID = id;
 
-            var values = db.TblServices.Find(p.ServicesID);
+            var values = db.TblHobby.Find(p.HobbyID);
             //güncelleme
-            values.Title = p.Title;
+            values.HobbyName = p.HobbyName;
             values.MemberID = p.MemberID;
-           
+          
             db.SaveChanges();
 
             return RedirectToAction("Index");
 
 
         }
-       
+      
 
         [HttpGet]
-        public ActionResult AddSkill()
+        public ActionResult AddHobby()
         {
             //Bu metod sadece sayfa yüklendiği zaman çalışarak boş değer eklemenin önüne geçilecek
             return View();
 
         }
         [HttpPost]//post işleminde ise bu metodun çalışması sağlanır.
-        public ActionResult AddSkill(TblServices p)
+        public ActionResult AddHobby(TblHobby p)
         {
             //upload image
             if (Request.Files.Count > 0)
@@ -119,7 +118,7 @@ namespace DemoUpSchoolProject.Controllers
             var values = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
             var id = values.MemberID;
             p.MemberID = id;
-            db.TblServices.Add(p);
+            db.TblHobby.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");
 

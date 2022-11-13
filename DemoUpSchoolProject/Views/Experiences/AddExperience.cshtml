@@ -16,10 +16,15 @@
     @Html.TextBoxFor(x => x.Description, new { @class = "form form-control" })
     <label>Başlangıç- Bitiş Tarihi</label>
     @Html.TextBoxFor(x => x.Duration, new { @class = "form form-control" })
+    <label>Başlangıç Tarihi</label>
+    <input name="StartDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+    <label>Bitiş Tarihi</label>
+    <input name="EndDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+    <label>Kurum Logosu</label>
     <label>Şirket Logosu</label>
-    <input type="file" name="CompanyLogo"/>
+    <input type="file" name="CompanyLogo" />
     <br />
-    <input type="submit" value="Kaydet" class="btn btn-primary"/>
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
 
 
 }

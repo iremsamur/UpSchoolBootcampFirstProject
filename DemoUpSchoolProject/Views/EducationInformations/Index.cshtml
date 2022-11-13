@@ -1,0 +1,66 @@
+﻿@using DemoUpSchoolProject.Models.Entities
+@model List<TblEducationInformations>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    int count = 0;
+}
+<h2>Öğrenim Bilgilerim</h2>
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning" role="alert">
+        Kayıt Bulunamadı!!
+    </div>
+    <br />
+}
+else
+{
+    <!--üste eklenen model ile controllers values'dan gelen değerler karşılanır.-->
+    <table class="table table-bordered">
+        <!--Önce aracın türü sonra biçimlendirme formatı şeklinde bootstrap verilir.
+        türü table, table-bordered ise format şekli -->
+        <tr>
+
+            <th>#</th>
+            <th>Kurum Logosu</th>
+            <th>Kurum Adı</th>
+            <th>Açıklama</th>
+            <th>Süre</th>
+
+
+
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+        <!--razor syntax-->
+        @foreach (var item in Model)
+        {
+            count += 1;
+            <tr>
+
+                <td>@count</td>
+                <td>
+                    <img src="@item.EducationOrganizationLogo" class="img-fluid img-thumbnail" alt="@item.EducationOrganizationName">
+                </td>
+                <td>@item.EducationOrganizationName</td>
+                <td>@item.Description</td>
+                <td>@item.Duration</td>
+
+
+
+                <td><a href="/EducationInformations/DeleteEducationInformation/@item.EducationInformationID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/EducationInformations/UpdateEducationInformation/@item.EducationInformationID" class="btn btn-success">Güncelle</a></td>
+
+
+            </tr>
+
+        }
+
+
+    </table>
+
+
+}
+<a href="/EducationInformations/AddEducationInformation" class="btn btn-primary">Yeni Öğrenim Bilgisi Ekle</a>
+

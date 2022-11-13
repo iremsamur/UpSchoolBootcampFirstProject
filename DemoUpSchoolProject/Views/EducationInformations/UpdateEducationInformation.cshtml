@@ -1,0 +1,26 @@
+﻿@model  DemoUpSchoolProject.Models.Entities.TblEducationInformations
+@{
+    ViewBag.Title = "UpdateEducationInformation";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Öğrenim Bilgisi Güncelle</h2>
+
+@using (Html.BeginForm("UpdateEducationInformation", "EducationInformations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.EducationInformationID, new { @class = "form-control" })
+    <label>Kurum Adı</label>
+    @Html.TextBoxFor(x => x.EducationOrganizationName, new { @class = "form form-control" })
+    <label>Açıklama</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form form-control" })
+    <label>Süre</label>
+    @Html.TextBoxFor(x => x.Duration, new { @class = "form form-control" })
+
+    <label>Kurum Logosu</label>
+    <input type="file" name="EducationOrganizationLogo" />
+    <br />
+    <input type="submit" value="Güncelle" class="btn btn-primary" />
+
+
+}
+

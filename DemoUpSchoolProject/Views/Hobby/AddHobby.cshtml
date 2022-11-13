@@ -1,0 +1,20 @@
+﻿@model DemoUpSchoolProject.Models.Entities.TblHobby
+@{
+    ViewBag.Title = "AddHobby";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<h2>Yeni Hobi Ekle</h2>
+<br />
+@using (Html.BeginForm("AddHobby", "Hobby", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label>Hobi Adı</label>
+    @Html.TextBoxFor(x => x.HobbyName, new { @class = "form form-control" })
+   
+    <label>Hobi Görsel</label>
+    <input type="file" name="ImageUrl" />
+    <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+
+
+}
+

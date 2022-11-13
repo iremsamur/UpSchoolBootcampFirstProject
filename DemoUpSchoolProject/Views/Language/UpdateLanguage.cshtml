@@ -1,0 +1,24 @@
+﻿@model  DemoUpSchoolProject.Models.Entities.TblLanguage
+@{
+    ViewBag.Title = "UpdateLanguage";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Öğrenim Bilgisi Güncelle</h2>
+
+@using (Html.BeginForm("UpdateLanguage", "Language", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.LanguageID, new { @class = "form-control" })
+    <label>Dil Adı</label>
+    @Html.TextBoxFor(x => x.LanguageName, new { @class = "form form-control" })
+    <label>Dil Seviyesi</label>
+    @Html.TextBoxFor(x => x.LanguageLevel, new { @class = "form form-control" })
+   
+
+  
+    <br />
+    <input type="submit" value="Güncelle" class="btn btn-primary" />
+
+
+}
+

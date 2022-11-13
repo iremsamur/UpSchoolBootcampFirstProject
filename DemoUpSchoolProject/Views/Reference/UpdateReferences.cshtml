@@ -1,0 +1,38 @@
+﻿@model  DemoUpSchoolProject.Models.Entities.TblReferences
+@{
+    ViewBag.Title = "UpdateReferences";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Referansı Güncelle</h2>
+
+@using (Html.BeginForm("UpdateReferences", "Reference", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.ReferenceID, new { @class = "form-control" })
+    <label>Adı</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form form-control" })
+    <label>Soyadı</label>
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form form-control" })
+    <label>Ünvanı</label>
+    @Html.TextBoxFor(x => x.JobTitle, new { @class = "form form-control" })
+    <label>Çalıştığı Şirket Adı</label>
+    @Html.TextBoxFor(x => x.CompanyName, new { @class = "form form-control" })
+    <label>Mail Adresi</label>
+    @Html.TextBoxFor(x => x.EMail, new { @class = "form form-control" })
+    <label>Telefon Numarası</label>
+    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form form-control" })
+
+
+    <label>Yorum</label>
+    @Html.TextBoxFor(x => x.Comment, new { @class = "form form-control" })
+    <label>Resmi</label>
+    <input type="file" name="Image" />
+    <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+
+
+}
+
+
+
+

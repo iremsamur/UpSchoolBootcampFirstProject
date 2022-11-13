@@ -1,0 +1,76 @@
+﻿@using DemoUpSchoolProject.Models.Entities
+@model List<TblReferences>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h2>Referanslarım</h2>
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning" role="alert">
+        Kayıt Bulunamadı!!
+    </div>
+    <br />
+}
+else
+{
+    <!--üste eklenen model ile controllers values'dan gelen değerler karşılanır.-->
+    <table class="table table-bordered">
+        <!--Önce aracın türü sonra biçimlendirme formatı şeklinde bootstrap verilir.
+        türü table, table-bordered ise format şekli -->
+        <tr>
+
+            <th>#</th>
+            <th>Referans Resmi</th>
+            <th>Adı-Soyadı</th>
+            <th>Çalıştığı Şirket Adı</th>
+            <th>Çalıştığı Profesyonellik Alanı</th>
+            <th>Mail Adresi</th>
+            <th>Telefon Numarası</th>
+            <th>Yorum</th>
+
+
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+        <!--razor syntax-->
+        @foreach (var item in Model)
+        {
+            sayac += 1;
+    <tr>
+
+        <td>@sayac</td>
+        <td>
+            <img src="@item.Image" class="img-fluid img-thumbnail" alt="@item.Name @item.Surname">
+        </td>
+        <td>@item.Name @item.Surname</td>
+        <td>@item.Name @item.CompanyName</td>
+        <td>@item.JobTitle</td>
+        <td>@item.EMail</td>
+        <td>@item.PhoneNumber</td>
+        <td>@item.Comment</td>
+
+
+        <td><a href="/Reference/DeleteReferences/@item.ReferenceID" class="btn btn-danger">Sil</a></td>
+        <td><a href="/Reference/UpdateReferences/@item.ReferenceID" class="btn btn-success">Güncelle</a></td>
+       
+
+    </tr>
+
+        }
+
+
+    </table>
+
+
+}
+<a href="/Reference/AddReferences" class="btn btn-primary">Yeni Referans Ekle</a>
+
+
+
+
+
+

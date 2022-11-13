@@ -1,0 +1,25 @@
+﻿@model DemoUpSchoolProject.Models.Entities.TblEducationInformations
+@{
+    ViewBag.Title = "AddEducationInformation";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<h2>Yeni Öğrenim Bilgisi Ekle</h2>
+<br />
+@using (Html.BeginForm("AddEducationInformation", "EducationInformations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label>Kurum Adı</label>
+    @Html.TextBoxFor(x => x.EducationOrganizationName, new { @class = "form form-control" })
+    <label>Açıklama</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form form-control" })
+    <label>Süre</label>
+    @Html.TextBoxFor(x => x.Duration, new { @class = "form form-control" })
+  
+    <label>Kurum Logosu</label>
+    <input type="file" name="EducationOrganizationLogo" />
+    <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+
+
+}
+
