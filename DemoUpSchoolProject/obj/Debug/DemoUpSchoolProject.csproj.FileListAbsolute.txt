@@ -80,3 +80,4 @@ C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\b
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\bin\EntityFramework.SqlServer.dll
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\bin\EntityFramework.xml
 C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\bin\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\UpSchoolBootcamp\DemoUpSchoolProject\DemoUpSchoolProject\obj\Debug\DemoUpSchoolProject.csproj.AssemblyReference.cache

@@ -17,12 +17,14 @@ namespace DemoUpSchoolProject.Controllers
         public ActionResult Index()
         {
             var mail = Session["MemberMail"].ToString();
+
             var loggedUserInformations = db.TblMember.Where(x => x.MemberMail == mail).FirstOrDefault();
             var id = loggedUserInformations.MemberID;
            
             ViewBag.loggedUser = loggedUserInformations.MemberName + " " + loggedUserInformations.MemberSurname;
 
             var loggedUserAbout = db.TblAbout.Where(x => x.MemberID == loggedUserInformations.MemberID).FirstOrDefault();
+
 
             ViewBag.loggedUserImage = loggedUserAbout.ImageUrl;
 

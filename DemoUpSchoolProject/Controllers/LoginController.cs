@@ -35,5 +35,9 @@ namespace DemoUpSchoolProject.Controllers
                 return RedirectToAction("Index");
             }
         }
+        public ActionResult Logout()
+        {
+            return View("Index");
+        }
     }
 }
